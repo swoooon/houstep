@@ -1,7 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Root from "./components/Root"
 
 ReactDOM.render(
-  <h1>hello, world!</h1>,
+  <React.StrictMode>
+    <Root />
+  </React.StrictMode>,
   document.getElementById('root')
 );
