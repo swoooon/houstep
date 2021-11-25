@@ -6,7 +6,7 @@ const Header = () => {
       <div className={styles.contents}>
         <div>Logo</div>
 
-        <button>Login</button>
+        <button class="btn btn-light">Login</button>
       </div>
     </header>
   )
