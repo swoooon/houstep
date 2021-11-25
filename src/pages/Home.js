@@ -6,7 +6,7 @@ const Home = () => {
   const [isModalActive, setIsModalActive] = useState(false);
 
   return (
-    <Layout header={{title: "Houstep", noBackBtn: true}} footer loading>
+    <Layout>
       <p>
         <b>{value}</b>만큼 사랑해!
       </p>
