@@ -1,12 +1,13 @@
 import styles from "../assets/Header.module.scss"
+import { ReactComponent as Logo } from "../assets/logo.svg"
+import { ReactComponent as MenuIcon } from "../assets/menuIcon.svg"
 
 const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.contents}>
-        <div>Logo</div>
-
-        <button class="btn btn-light">Login</button>
+        <Logo/>
+        <MenuIcon/>
       </div>
     </header>
   )
