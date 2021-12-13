@@ -1,16 +1,17 @@
 import React from 'react';
-import { useState } from 'react';
 import Layout from '../components/Layout';
 import { ReactComponent as HomeIcon } from '../assets/homeIcon.svg'
 
-const Main = () => {
+const styles = {
+  width: "100%"
+};
 
-  //const [state, setState] = useState();
+const Main = () => {
 
   return (
     <Layout>
-      <div>This is Main Page</div>
-      <HomeIcon/>
+      <div style={styles}>This is Main Page</div>
+      <HomeIcon style={styles}/>
     </Layout>
   );
 };
