@@ -26,7 +26,7 @@ const Main = () => {
     <Layout>
       <Icon style={iconStyle}/>
       <Props style={propsStyle}/>
-      <div style={introStyle}> 안전한 계약을 위한 첫 걸음 </div>
+      <div style={introStyle}> 안전한 계약을 위한 첫걸음 </div>
     </Layout>
   );
 };
