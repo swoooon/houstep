@@ -8,10 +8,7 @@ import { ReactComponent as Props } from '../assets/PROPS.svg'
 import KakaoLogin from '../assets/kakaoLogin.png'
 
 const kakaoStyle = {
-  marginTop: "70%",
-  border: "0",
-  outline: "0",
-  backgroundColor: 'transparent'
+  marginTop: "70%"
 }
 
 const Main = () => {
@@ -20,7 +17,9 @@ const Main = () => {
       <Icon className={styles.icon}/>
       <Props className={styles.logo}/>
       <div className={styles.intro}> 안전한 계약을 위한 첫걸음 </div>
-      <button style={kakaoStyle} type='button'> <Link to='/search'> <img src={KakaoLogin} alt='kakaoLogin'/> </Link> </button>
+      
+      <button className={styles.buttonLogo} style={kakaoStyle} type='button'> 
+      <Link to='/search'> <img src={KakaoLogin} alt='kakaoLogin'/> </Link> </button>
     </Layout>
   );
 };
