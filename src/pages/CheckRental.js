@@ -7,7 +7,7 @@ const CheckRental = () => {
 
   return (
     <Layout>
-      
+      <div>This is CheckRental Page</div>
     </Layout>
   );
 };

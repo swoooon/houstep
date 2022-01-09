@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
 import Modal from 'react-modal'
 
 import styles from '../assets/Icon.module.scss'
 import { BsSearch } from 'react-icons/bs'
 
-const SearchButton = (props) => {
+const SearchAddress = (props) => {
   const [ modalIsOpen, setModalIsOpen ] = useState(false);
   const [ searchClicked, setSearchClicked ] = useState(false);
   const [ address, setAddress ] = useState('');
@@ -24,6 +25,7 @@ const SearchButton = (props) => {
   const checkAddress = (value) => {
     setSearchClicked(true);
     setAddress(value);
+    // initialize state
     setClickedIndex(-1);
     setIndexBool(false);
   }
@@ -111,6 +113,7 @@ const SearchButton = (props) => {
         }}
       >
         <div className={styles.searchDiv}>
+          {/** search bar in modal content */}
           <input className={styles.searchBar} id='searchAddress'
             style={{
               width: '100%', 
@@ -123,6 +126,7 @@ const SearchButton = (props) => {
             top: '32px',
             right: '18px',
             }}
+            // search button clicked, call function checkAddress(value)
             onClick= {() => checkAddress(document.getElementById('searchAddress').value)}
           />
         </div>
@@ -143,19 +147,21 @@ const SearchButton = (props) => {
                 }
               </div>
             </ul>
-            {indexBool ? (
-              <button type="button" className="btn btn-outline-secondary"
-                style={{
-                  margin: 'auto',
-                  marginTop: '50%',
-                  display: 'block',
-                  width: '110px',
-                  fontWeight: '600',
-                  border: '1px solid lightgray',
-                  borderRadius: '20px'
-                }}
-              >다음</button>
-            ) : (
+            {indexBool ? (  // if user select address,
+              <Link to='/checkRental'>
+                <button type="button" className="btn btn-outline-secondary"
+                  style={{
+                    margin: 'auto',
+                    marginTop: '50%',
+                    display: 'block',
+                    width: '110px',
+                    fontWeight: '600',
+                    border: '1px solid lightgray',
+                    borderRadius: '20px'
+                  }}
+                >다음</button>
+              </Link>
+            ) : ( // else (if user does not select address),
               <div className={styles.helpDiv} style={{marginTop: '50%'}}>주소가 안나와요!</div>
             )}
           </>
@@ -177,4 +183,4 @@ const SearchButton = (props) => {
 
 Modal.setAppElement('#root')
 
-export default SearchButton;
+export default SearchAddress;
