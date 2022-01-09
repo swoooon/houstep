@@ -131,17 +131,6 @@ const SearchButton = (props) => {
           <>
             {testSearch(address)}
             <ul className={styles.searchBox}>
-              {
-                /**[...Array(searchCount)].map((e, i) => {
-                  return (
-                    <div className={styles.searchBlock} key={i} onClick={(e) => setClickedBox(e.currentTarget)}>
-                      <div>{searchData[i].complexType}</div>
-                      <div>{searchData[i].detailAddress} [{searchData[i].landCode}]</div>
-                    </div>
-                  );
-                })
-               */
-              }
               <div>
                 {
                   searchData.map((e, i) => 
