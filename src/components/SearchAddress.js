@@ -98,6 +98,7 @@ const SearchAddress = (props) => {
           overlay: {
             position: 'fixed',
             width: '375px',
+            height: '812px',
             margin: '0 auto',
             backgroundColor: 'rgba(0, 0, 0, 0.75)'
           },
@@ -148,21 +149,21 @@ const SearchAddress = (props) => {
               </div>
             </ul>
             {indexBool ? (  // if user select address,
-              <Link to='/checkRental'>
+              <Link to='/checkRental' style={{textDecoration:'none'}}>
                 <button type="button" className="btn btn-outline-secondary"
                   style={{
                     margin: 'auto',
-                    marginTop: '50%',
+                    marginTop: '30%',
                     display: 'block',
                     width: '110px',
                     fontWeight: '600',
                     border: '1px solid lightgray',
-                    borderRadius: '20px'
+                    borderRadius: '20px',
                   }}
                 >다음</button>
               </Link>
             ) : ( // else (if user does not select address),
-              <div className={styles.helpDiv} style={{marginTop: '50%'}}>주소가 안나와요!</div>
+              <div className={styles.helpDiv} style={{marginTop: '40%'}}>주소가 안나와요!</div>
             )}
           </>
         }

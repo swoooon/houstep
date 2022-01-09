@@ -21,6 +21,7 @@ const Header = () => {
             overlay: {
               position: 'fixed',
               width: '375px',
+              height: '812px',
               margin: '0 auto',
               backgroundColor: 'rgba(0, 0, 0, 0.75)'
             },

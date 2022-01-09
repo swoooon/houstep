@@ -1,11 +1,12 @@
 .layout {
-  //padding-top: 80px;
   width: 375px;
+  height: 812px;
   background-color: white;
   margin:0 auto;
 }
 
 .main {
-  min-height: calc(100vh - 180px);
+  //min-height: calc(100vh - 180px);
   text-align: center;
+  height: 632px;
 }

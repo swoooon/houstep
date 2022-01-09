@@ -7,13 +7,12 @@ document.body.style.backgroundColor = "grey";
 const Layout = (props) => {
   return (
     <div className={styles.layout}>
+      {console.log(window.innerHeight)}
       <Header />
       
       <main className={styles.main}>
         {props.children}
       </main>
-      
-      <Footer />
     </div>
   )
 }
