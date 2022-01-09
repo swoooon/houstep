@@ -26,6 +26,7 @@
   width: 85%;
   height: 2.8em;
   margin-top: 15%;
+  padding-left: 15px;
   background-color: transparent;
   color: gray;
   font-size: 0.9em;
@@ -59,9 +60,59 @@
 }
 
 .searchEx {
-  margin-left: 45px;
+  margin-left: 4.5em;
   margin-top: 15px;
   font-size: 0.7em;
   font-weight: 600;
   color: gray;
+}
+
+.menuBox {
+  clear: both;
+  width: 100%;
+  text-align: center;
+  padding: 18px;
+  border-top: 1.8px solid lightgray;
+  font-weight: 600;
+}
+
+.searchBox {
+  padding: 0;
+  margin: 10px;
+  height: 380px;
+  overflow: auto;
+  border: 1px solid lightgray;
+  border-collapse: collapse;
+}
+
+.searchBlock {
+  border-top: 1px solid #C0C0C0;
+  border-collapse: collapse;
+  padding: 15px 0;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-top: -1px;
+  font-size: 0.75em;
+  font-weight: 500;
+  line-height: 180%;
+}
+.clicked {
+  border-top: 1px solid #C0C0C0;
+  border-collapse: collapse;
+  padding: 15px 0;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-top: -1px;
+  font-size: 0.75em;
+  font-weight: 500;
+  line-height: 180%;
+  background-color: #ECECEC;
+}
+
+.helpDiv {
+  color: #404040;
+  font-size: 0.75em;
+  text-align: center;
+  text-decoration: underline;
+  text-underline-position: under left;
 }

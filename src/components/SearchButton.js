@@ -8,26 +8,91 @@ const SearchButton = (props) => {
   const [ modalIsOpen, setModalIsOpen ] = useState(false);
   const [ searchClicked, setSearchClicked ] = useState(false);
   const [ address, setAddress ] = useState('');
+  const [ clickedBox, setClickedBox ] = useState();
+  const [ clickedIndex, setClickedIndex ] = useState(-1);
+  const [ indexBool, setIndexBool ] = useState(false);
 
   // When modal closed, call function initialize()
   const initialize = () => {
     setModalIsOpen(false);
     setSearchClicked(false);
+    setClickedIndex(-1);
+    setIndexBool(false);
   }
 
   // When search button in modal content clicked, call function checkAddress(value)
   const checkAddress = (value) => {
     setSearchClicked(true);
     setAddress(value);
-    console.log(value);
+    setClickedIndex(-1);
+    setIndexBool(false);
   }
+
+  const testDB = [
+    { 
+      "complexType": "집합건물",
+      "detailAddress": "경기도 안양시 동안구 부림로 80 초원아파트 501동 제 1층 제 101호",
+      "landCode": "평촌동 897-5",
+      "uniqueNo": "1341-1996-127219"
+    },
+    { 
+      "complexType": "집합건물",
+      "detailAddress": "경기도 안양시 동안구 부림로 80 초원아파트 501동 제 1층 제 102호",
+      "landCode": "평촌동 897-5",
+      "uniqueNo": "1341-1996-127220"
+    },
+    { 
+      "complexType": "집합건물",
+      "detailAddress": "경기도 안양시 동안구 부림로 80 초원아파트 501동 제 1층 제 103호",
+      "landCode": "평촌동 897-5",
+      "uniqueNo": "1341-1996-127221"
+    },
+    { 
+      "complexType": "집합건물",
+      "detailAddress": "경기도 남양주시 금곡동 부영아파트",
+      "landCode": "금곡동 897-5",
+      "uniqueNo": "1341-1436-122419"
+    },
+    { 
+      "complexType": "집합건물",
+      "detailAddress": "서울특별시 마포구 와우산로 94 홍익대학교 C동 607호",
+      "landCode": "상수동 240-23",
+      "uniqueNo": "1234-1535-954319"
+    },
+    { 
+      "complexType": "집합건물",
+      "detailAddress": "서울특별시 마포구 와우산로 94 홍익대학교 C동 608호",
+      "landCode": "상수동 240-23",
+      "uniqueNo": "1234-1535-954320"
+    },
+  ];
+
+  let searchCount = 0;
+  let searchData = [];
+
+  const testSearch = (keyword) => {
+
+    testDB.map((house) => {
+      if (house['detailAddress'].indexOf(keyword) !== -1) {
+        searchData.push(house);
+        searchCount++;
+      }
+    });
+    //console.log(searchData);
+  };
+
+  const checkClicked = (box, index) => {
+    setClickedBox(box);
+    setClickedIndex(index);
+    setIndexBool(true);
+  };
 
   return (
     <div>
       <button className={styles.searchBar} type='button' onClick={() => setModalIsOpen(true)}> 
-      &nbsp;&nbsp;&nbsp; 주소를 입력해 주세요 <BsSearch className={styles.bsSearch}/> </button>
+        주소를 입력해 주세요 <BsSearch className={styles.bsSearch}/> </button>
       <Modal isOpen={modalIsOpen} onRequestClose={() => initialize()}
-        style= {{
+        style={{
           overlay: {
             position: 'fixed',
             width: '375px',
@@ -50,7 +115,6 @@ const SearchButton = (props) => {
             style={{
               width: '100%', 
               top: '-30px', 
-              padding: '15px', 
               paddingRight: '45px'
             }} 
             type='text' placeholder='주소를 입력해 주세요'/>
@@ -62,17 +126,59 @@ const SearchButton = (props) => {
             onClick= {() => checkAddress(document.getElementById('searchAddress').value)}
           />
         </div>
-        {searchClicked &&
-          address
+
+        {searchClicked && // if search button status is clicked, show search details
+          <>
+            {testSearch(address)}
+            <ul className={styles.searchBox}>
+              {
+                /**[...Array(searchCount)].map((e, i) => {
+                  return (
+                    <div className={styles.searchBlock} key={i} onClick={(e) => setClickedBox(e.currentTarget)}>
+                      <div>{searchData[i].complexType}</div>
+                      <div>{searchData[i].detailAddress} [{searchData[i].landCode}]</div>
+                    </div>
+                  );
+                })
+               */
+              }
+              <div>
+                {
+                  searchData.map((e, i) => 
+                    <div className={(i === clickedIndex) ? styles.clicked : styles.searchBlock}
+                      key={i} onClick={() => checkClicked(e, i)}
+                    >
+                      <div>{e.complexType}</div>
+                      <div>{e.detailAddress} [{e.landCode}]</div>
+                    </div>)
+                }
+              </div>
+            </ul>
+            {indexBool ? (
+              <button type="button" className="btn btn-outline-secondary"
+                style={{
+                  margin: 'auto',
+                  marginTop: '50%',
+                  display: 'block',
+                  width: '110px',
+                  fontWeight: '600',
+                  border: '1px solid lightgray',
+                  borderRadius: '20px'
+                }}
+              >다음</button>
+            ) : (
+              <div className={styles.helpDiv} style={{marginTop: '50%'}}>주소가 안나와요!</div>
+            )}
+          </>
         }
-        {!searchClicked && 
+        {!searchClicked &&  // if search button status is not clicked, show search tips
           <>
             <div className={styles.searchH2}>검색 Tip</div>
             <div className={styles.searchH3}>• 도로명 + 건물번호</div>
             <div className={styles.searchH3}>• 동/읍/면/리 + 번지</div>
             <div className={styles.searchH3}>• 건물명, 아파트명</div>
 
-            <div className={styles.searchEx} >EX: 서울시 마포구 00아파트 제 00동 제 00호</div>
+            <div className={styles.searchEx} >ex) 서울시 마포구 00아파트 제 00동 제 00호</div>
           </>
         }
       </Modal>
