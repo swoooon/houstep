@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
 import { useLocation } from "react-router-dom"
 import Modal from 'react-modal'
@@ -21,6 +21,8 @@ const CheckRental = props => {
 
   const { state } = useLocation();
 
+  const overlayMargin = (window.innerHeight>812 ? ((window.innerHeight - 812) / 2) : '0px')
+
   const question = [
     {
       '0': '거래 형태가',
@@ -32,8 +34,19 @@ const CheckRental = props => {
     }
   ]
 
+  useEffect(() => {
+    setClickedIndex();
+    setQuestionNumber(0);
+    setGuarantee();
+    setNum('');
+
+    setComplexType();
+    setDetailAddress();
+    setLandCode();
+  }, [])
+
   const buttonClicked = (index) => {
-    if (!complexType) {
+    if (!complexType && state) {
       setComplexType(state.address.complexType);
       setDetailAddress(state.address.detailAddress);
       setLandCode(state.address.landCode);
@@ -178,6 +191,7 @@ const CheckRental = props => {
                 width: '375px',
                 height: '812px',
                 margin: '0 auto',
+                marginTop: overlayMargin,
                 backgroundColor: 'rgba(0, 0, 0, 0.85)'
               },
               content: {
