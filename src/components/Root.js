@@ -6,14 +6,12 @@ import Search from "../pages/Search";
 import CheckRental from "../pages/CheckRental";
 
 const Root = () => (
-  <BrowserRouter>
-    <Routes>
-      <Route path="/" element={Home()} />
-      <Route path="/main" element={Main()} />
-      <Route path="/search" element={Search()} />
-      <Route path="/checkRental" element={CheckRental()} />
-    </Routes>
-  </BrowserRouter>
+  <Routes>
+    <Route path="/" element={Home()} />
+    <Route path="/main" element={Main()} />
+    <Route path="/search" element={Search()} />
+    <Route path="/checkRental" element={CheckRental()} />
+  </Routes>
 )
 
 export default Root;
