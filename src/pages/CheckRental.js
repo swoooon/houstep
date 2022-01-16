@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState } from "react"
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
-import { useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom"
+import Modal from 'react-modal'
 
 import Layout from '../components/Layout'
 import styles from '../assets/Icon.module.scss'
@@ -16,6 +17,8 @@ const CheckRental = props => {
   const [ detailAddress, setDetailAddress ] = useState();
   const [ landCode, setLandCode ] = useState();
 
+  const [ payModalisOpen, setPayModalisOpen ] = useState(false);
+
   const { state } = useLocation();
 
   const question = [
@@ -30,12 +33,16 @@ const CheckRental = props => {
   ]
 
   const buttonClicked = (index) => {
-    if (!complexType)
+    if (!complexType) {
       setComplexType(state.address.complexType);
-    if (!detailAddress)
       setDetailAddress(state.address.detailAddress);
-    if (!landCode)
       setLandCode(state.address.landCode);
+    }
+    else {
+      setComplexType('Complex Type');
+      setDetailAddress('OOOO시 OO구 OO로 OOO OOOOO 제 O층 제OOO호');
+      setLandCode('OO동OOO-OO');
+    }
 
     setClickedIndex(index);
 
@@ -77,9 +84,7 @@ const CheckRental = props => {
 
   const safetyButtonClicked = () => {
     setGuarantee(document.getElementById('guaranteeInput').value);
-    console.log(complexType);
-    console.log(detailAddress);
-    console.log(landCode);
+    setPayModalisOpen(true);
   }
 
   return (
@@ -166,6 +171,68 @@ const CheckRental = props => {
             }}
             onClick={() => safetyButtonClicked()}
           >안전도 알아보러 가기</button>
+          <Modal isOpen={payModalisOpen}
+            style={{
+              overlay: {
+                position: 'fixed',
+                width: '375px',
+                height: '812px',
+                margin: '0 auto',
+                backgroundColor: 'rgba(0, 0, 0, 0.85)'
+              },
+              content: {
+                position: 'absolute',
+                width: '293px',
+                height: '309px',
+                left: '41px', // (overlay width - content width) / 2
+                top: '251.5px', // (overlay height - content height) / 2
+                borderRadius: '20px',
+                paddingLeft: '32px',
+                paddingRight: '32px',
+                paddingTop: '30px',
+                paddingBottom: '30px'
+              }
+            }}
+          >
+            <div style={{fontSize: '1.1em', fontWeight: '700', textAlign: 'center'}}>4,900원 결제하기</div>
+            <div style={{fontSize: '0.8em', fontWeight: '700', textAlign: 'center', marginTop: '23px'}}>{detailAddress}</div>
+            <div style={{fontSize: '0.8em', fontWeight: '700', textAlign: 'center'}}>[{landCode}]</div>
+            <div style={{fontSize: '0.8em', fontWeight: '700', textAlign: 'center', marginTop: '18px'}}>주소로 확인하시겠습니까?</div>
+            <div style={{display: 'flex', marginTop: '15px'}}>
+              <button type="button" className="btn btn-outline-primary"
+                style={{
+                  margin: 'auto',
+                  display: 'block',
+                  height: '30px',
+                  fontWeight: '500',
+                  borderRadius: '20px',
+                  flex: '1',
+                  fontSize: '12px',
+                  padding: '9px, 0px',
+                }}
+                onClick={() => setPayModalisOpen(false)}
+              >취소</button>
+              <div style={{flex: '0.4'}}></div>
+              <button type="button" className="btn btn-primary"
+                style={{
+                  margin: 'auto',
+                  display: 'block',
+                  height: '30px',
+                  fontWeight: '500',
+                  borderRadius: '20px',
+                  flex: '1',
+                  fontSize: '12px',
+                  padding: '9px, 0px'
+                }}
+              >확인</button>
+            </div>
+            <div className={styles.tips} style={{marginTop: '25px'}}>
+              결제 금액은 등기부 등본, 건축물 대장
+            </div>
+            <div className={styles.tips}>
+              서류 발급 대행비이며 안전도 해석 서비스는 무료입니다.
+            </div>
+          </Modal>
         </>
       }
 
@@ -178,7 +245,6 @@ const CheckRental = props => {
           <div style={{marginTop: '25px', fontSize: '0.8em', fontWeight: '600', color: 'gray'}}>감사합니다.</div>
         </>
       }
-      
     </Layout>
   );
 };
