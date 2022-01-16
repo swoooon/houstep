@@ -13,6 +13,8 @@ const SearchAddress = (props) => {
   const [ clickedIndex, setClickedIndex ] = useState(-1);
   const [ indexBool, setIndexBool ] = useState(false);
 
+  const overlayMargin = (window.innerHeight>812 ? ((window.innerHeight - 812) / 2) : '0px')
+
   // When modal closed, call function initialize()
   const initialize = () => {
     setModalIsOpen(false);
@@ -100,6 +102,7 @@ const SearchAddress = (props) => {
             width: '375px',
             height: '812px',
             margin: '0 auto',
+            marginTop: overlayMargin,
             backgroundColor: 'rgba(0, 0, 0, 0.75)'
           },
           content: {

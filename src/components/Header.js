@@ -11,10 +11,15 @@ import { ReactComponent as MenuIcon } from '../assets/menuIcon.svg'
 const Header = () => {
   const [ modalIsOpen, setModalIsOpen ] = useState(false);
 
+  const overlayMargin = (window.innerHeight>812 ? ((window.innerHeight - 812) / 2) : '0px')
+
   return (
     <header className={styles.header}>
       <div className={styles.contents}>
-        <button className={logoStyles.buttonLogo} type='button'> <Link to='/main'> <img src={Logo} alt='propsLogo'/> </Link> </button>
+        <button className={logoStyles.buttonLogo} type='button'
+         onClick={() => window.location.replace('/main')}> 
+          <Link to='/main'> <img src={Logo} alt='propsLogo'/> </Link> 
+        </button>
         <MenuIcon onClick={() => setModalIsOpen(true)}/>
         <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}
           style= {{
@@ -23,6 +28,7 @@ const Header = () => {
               width: '375px',
               height: '812px',
               margin: '0 auto',
+              marginTop: overlayMargin,
               backgroundColor: 'rgba(0, 0, 0, 0.75)'
             },
             content: {
