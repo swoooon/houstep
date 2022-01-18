@@ -138,37 +138,67 @@ const SearchAddress = (props) => {
         {searchClicked && // if search button status is clicked, show search details
           <>
             {testSearch(address)}
-            <ul className={styles.searchBox}>
-              <div>
-                {
-                  searchData.map((e, i) => 
-                    <div className={(i === clickedIndex) ? styles.clicked : styles.searchBlock}
-                      key={i} onClick={() => checkClicked(e, i)}
-                    >
-                      <div>{e.complexType}</div>
-                      <div>{e.detailAddress} [{e.landCode}]</div>
-                    </div>)
-                }
-              </div>
-            </ul>
-            {indexBool ? (  // if user select address,
-              <Link to='/checkRental' state={{ address: searchData[clickedIndex] }}
-                style={{textDecoration:'none'}}>
-                <button type="button" className="btn btn-outline-secondary"
-                  style={{
-                    margin: 'auto',
-                    marginTop: '30%',
-                    display: 'block',
-                    width: '110px',
-                    fontWeight: '600',
-                    border: '1px solid lightgray',
-                    borderRadius: '20px',
-                  }}
-                >다음</button>
-              </Link>
-            ) : ( // else (if user does not select address),
-              <div className={styles.helpDiv} style={{marginTop: '40%'}}>주소가 안나와요!</div>
-            )}
+            {!(searchCount === 0) &&
+              <>
+                <ul className={styles.searchBox}>
+                  <div>
+                    {
+                      searchData.map((e, i) => 
+                        <div className={(i === clickedIndex) ? styles.clicked : styles.searchBlock}
+                          key={i} onClick={() => checkClicked(e, i)}
+                        >
+                          <div>{e.complexType}</div>
+                          <div>{e.detailAddress} [{e.landCode}]</div>
+                        </div>)
+                    }
+                  </div>
+                </ul>
+                {indexBool ? (  // if user select address,
+                  <Link to='/checkRental' state={{ address: searchData[clickedIndex] }}
+                    style={{textDecoration:'none'}}>
+                    <button type="button" className="btn btn-outline-secondary"
+                      style={{
+                        margin: 'auto',
+                        marginTop: '30%',
+                        display: 'block',
+                        width: '110px',
+                        fontWeight: '600',
+                        border: '1px solid lightgray',
+                        borderRadius: '20px',
+                      }}
+                    >다음</button>
+                  </Link>
+                ) : ( // else (if user does not select address),
+                  <Link to='/noAddress'>
+                    <div className={styles.helpDiv} style={{marginTop: '40%'}}>주소가 안나와요!</div>
+                  </Link>
+                )}
+              </>
+            }
+            {(searchCount === 0) &&
+              <>
+                <div className={styles.subTitleText} style={{marginTop: '1.3em', textAlign: 'center'}}>검색 결과가 없습니다.</div>
+                <div className={styles.box} style={{ marginTop: '50px', width: '95%', height: '350px', borderRadius: '7%' }}>
+                  <ul style={{color: 'gray'}}>
+                    <li className={styles.commonText} style={{marginBottom: '1.3em'}}> 오타가 있는지 확인해보세요. </li>
+                    <li className={styles.commonText} style={{marginBottom: '1.3em'}}> 도로명주소로 조회되지 않는 경우 지번주소를 입력해보세요. </li>
+                    <li className={styles.commonText} style={{marginBottom: '0'}}> 빌라/주택의 경우 검색결과가 건물 통째로 나올 수 있어요! </li>
+                    <li className={styles.commonText} style={{marginBottom: '1.3em', listStyle: 'none'}}> 내가 계약할 호수가 없다고 당황하지 말고 건물 주소로 안전도 분석을 받아주세요. </li>
+                    <li className={styles.commonText} style={{marginBottom: '1.3em'}}> 지은지 얼마 안된 빌라/아파트/오피스텔의 경우 아직 등기부등본이 없을 수 있어요.</li>
+                  </ul>
+                  <Link to='/attention' style={{color: 'gray', textUnderlinePosition: 'under'}}>
+                    <div className={styles.commonText} 
+                      style={{textAlign: 'center', marginLeft: '1em', marginTop: '3em', fontSize: '0.7em', color: 'gray'}}
+                    >신축 빌라/아파트/오피스텔 거래 주의사항 보기</div>
+                  </Link>
+                </div>
+                <Link to='/googleForm' style={{color: 'black', textUnderlinePosition: 'under'}}>
+                  <div className={styles.commonText} 
+                      style={{textAlign: 'center', marginTop: '5em', fontSize: '0.7em'}}
+                  >그래도 주소가 안나와요!</div>
+                </Link>
+              </>
+            }
           </>
         }
         {!searchClicked &&  // if search button status is not clicked, show search tips
