@@ -51,6 +51,9 @@ const CheckRental = props => {
       setDetailAddress(state.address.detailAddress);
       setLandCode(state.address.landCode);
     }
+    else if (state) {
+      //
+    }
     else {
       setComplexType('Complex Type');
       setDetailAddress('OOOO시 OO구 OO로 OOO OOOOO 제 O층 제OOO호');
