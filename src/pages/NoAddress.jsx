@@ -17,7 +17,7 @@ const NoAddress = () => {
           <div style={{ flex: '100' }}></div>
         </div>
       </Link>
-      <div style={{ marginTop: '80px', fontSize: '1.2em', fontWeight: '700' }}>주소가 안나와요!</div>
+      <div className={styles.subTitleText} style={{ marginTop: '80px' }}>주소가 안나와요!</div>
       <div className={styles.box} style={{ marginTop: '80px', marginBottom: '110px' }}>
         <ul>
           <li className={styles.commonText}> 오타가 있는지 확인해보세요. </li>

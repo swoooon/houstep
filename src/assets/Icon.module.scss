@@ -26,7 +26,7 @@
   width: 85%;
   height: 2.8em;
   margin-top: 15%;
-  padding-left: 15px;
+  padding-left: 1.5em;
   background-color: transparent;
   color: gray;
   font-size: 0.9em;
@@ -87,6 +87,7 @@
 
 .searchBlock {
   border-top: 1px solid #C0C0C0;
+  border-bottom: 1px solid #C0C0C0;
   border-collapse: collapse;
   padding: 15px 0;
   padding-left: 15px;
@@ -112,6 +113,7 @@
 .helpDiv {
   color: #404040;
   font-size: 0.75em;
+  font-weight: 600;
   text-align: center;
   text-decoration: underline;
   text-underline-position: under left;
@@ -179,6 +181,11 @@
   text-align: center;
   margin-left: -10%;
   margin-right: -10%;
+}
+
+.subTitleText {
+  font-size: 1.2em;
+  font-weight: 700;
 }
 
 .commonText {
