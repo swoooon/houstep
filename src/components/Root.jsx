@@ -4,6 +4,7 @@ import Home from "../pages/Home";
 import Main from "../pages/Main";
 import Search from "../pages/Search";
 import CheckRental from "../pages/CheckRental";
+import NoAddress from "../pages/NoAddress";
 
 const Root = () => (
   <Routes>
@@ -11,6 +12,7 @@ const Root = () => (
     <Route path="/main" element={Main()} />
     <Route path="/search" element={Search()} />
     <Route path="/checkRental" element={CheckRental()} />
+    <Route path="/noAddress" element={NoAddress()} />
   </Routes>
 )
 

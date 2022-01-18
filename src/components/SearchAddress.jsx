@@ -167,7 +167,9 @@ const SearchAddress = (props) => {
                 >다음</button>
               </Link>
             ) : ( // else (if user does not select address),
-              <div className={styles.helpDiv} style={{marginTop: '40%'}}>주소가 안나와요!</div>
+              <Link to='/noAddress'>
+                <div className={styles.helpDiv} style={{marginTop: '40%'}}>주소가 안나와요!</div>
+              </Link>
             )}
           </>
         }
