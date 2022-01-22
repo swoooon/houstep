@@ -1,5 +1,6 @@
-import Header from "../components/Header"
-import Footer from "../components/Footer"
+import Header from "./Header"
+// eslint-disable-next-line no-unused-vars
+import Footer from "./Footer"
 import styles from "../assets/Layout.module.scss"
 
 document.body.style.backgroundColor = "grey";
