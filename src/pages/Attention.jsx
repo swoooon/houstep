@@ -12,7 +12,7 @@ import { ReactComponent as AttentionReport } from '../assets/attentionReport.svg
 const Attention = () => {
   return (
     <Layout>
-      <div style={{background: 'linear-gradient(white, 40%, #FEF9F2)'}}>
+      <div style={{background: 'linear-gradient(white, rgba(255,243,224,0.47))'}}>
 
       <button className={styles.buttonLogo}
         style={{marginTop: '27px', marginLeft: '26px', float: 'left'}}
@@ -30,7 +30,7 @@ const Attention = () => {
       </div>
 
       {/** Summary of Main contents */}
-      <div className={styles.box} style={{marginTop: '46px', padding: '10px', height: '180px'}}>
+      <div className={styles.box} style={{position: 'relative', marginTop: '46px', padding: '10px', height: '180px', zIndex: '1'}}>
         <div style={{margin: '10px', fontSize: '1.1em', fontWeight: '600'}}>주요사항 요약</div>
         <div style={{marginTop: '10px'}}>
           <WarningIcon style={{float: 'left', marginRight: '8px'}}/>
@@ -43,9 +43,14 @@ const Attention = () => {
             계약시 소유자와 임대인이 동일한지 꼭  확인해주세요.</div>
         </div>
       </div>
-      
+
+      </div>
+      <div style={{backgroundColor: 'rgba(255,243,224,0.47)', zIndex: '-1'}}>
+
+      <div style={{position: 'relative', height: '35px', zIndex: '-1'}}/>
+
       {/** Report of Detailed diagnosis */}
-      <div className={styles.box} style={{marginTop: '35px', height: '1410px', padding: '20px'}}>
+      <div className={styles.box} style={{height: '1410px', padding: '20px'}}>
         <div style={{marginLeft: '10px', fontSize: '1.1em', fontWeight: '600'}}>세부 진단 리포트</div>
         <div style={{margin: '15px', textAlign: 'center', fontSize: '1.1em', fontWeight: '600'}}>
           신축이라 &nbsp;
