@@ -3,6 +3,12 @@
   height: 812px;
   background-color: white;
   margin:0 auto;
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
 }
 
 .main {
