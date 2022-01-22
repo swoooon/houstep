@@ -8,7 +8,8 @@ import { ReactComponent as AttentionReport } from '../assets/attentionReport.svg
 
 const Attention = () => {
   return (
-    <Layout style={{backgroundColor: 'blue'}}>
+    <Layout>
+      <div style={{background: 'linear-gradient(white, 40%, #FEF9F2)'}}>
       <Icon style={{ marginTop: '35px', marginLeft: '26px', float: 'left' }}/>
       
       <AttentionBar style={{ marginTop: '24px' }}/>
@@ -110,6 +111,7 @@ const Attention = () => {
         </>
       </div>
       <div style={{height: '80px'}}/>
+      </div>
     </Layout>
   )
 }
