@@ -1,7 +1,10 @@
 import { React } from 'react';
+// eslint-disable-next-line no-unused-vars
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
+
 import Layout from '../components/LayoutNoHeader'
 import styles from '../assets/Icon.module.scss'
-import { ReactComponent as Icon } from '../assets/orangeIcon.svg'
+import Logo from '../assets/orangeIcon.svg'
 import { ReactComponent as AttentionBar } from '../assets/attentionBar.svg'
 import { ReactComponent as WarningIcon } from '../assets/warningIcon.svg';
 import { ReactComponent as AttentionReport } from '../assets/attentionReport.svg'
@@ -10,7 +13,13 @@ const Attention = () => {
   return (
     <Layout>
       <div style={{background: 'linear-gradient(white, 40%, #FEF9F2)'}}>
-      <Icon style={{ marginTop: '35px', marginLeft: '26px', float: 'left' }}/>
+
+      <button className={styles.buttonLogo}
+        style={{marginTop: '27px', marginLeft: '26px', float: 'left'}}
+        type='button'
+        onClick={() => window.location.replace('/main')}> 
+          <Link to='/main'> <img src={Logo} alt='propsLogo'/> </Link> 
+      </button>
       
       <AttentionBar style={{ marginTop: '24px' }}/>
       {/** Attention Bar Text: 평범 주의 위험 */}
@@ -111,6 +120,7 @@ const Attention = () => {
         </>
       </div>
       <div style={{height: '80px'}}/>
+
       </div>
     </Layout>
   )
