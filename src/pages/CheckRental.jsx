@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect } from 'react'
+// eslint-disable-next-line no-unused-vars
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
-import { useLocation } from "react-router-dom"
+import { useLocation } from 'react-router-dom'
 import Modal from 'react-modal'
 
 import Layout from '../components/Layout'
@@ -8,18 +9,18 @@ import styles from '../assets/Icon.module.scss'
 import { ReactComponent as ServicePreparing } from '../assets/servicePreparing.svg'
 
 const CheckRental = props => {
-  const [ clickedIndex, setClickedIndex ] = useState();
-  const [ questionNumber, setQuestionNumber ] = useState(0);
-  const [ guarantee, setGuarantee ] = useState();
-  const [ num, setNum ] = useState('');
+  const [ clickedIndex, setClickedIndex ] = useState()
+  const [ questionNumber, setQuestionNumber ] = useState(0)
+  const [ guarantee, setGuarantee ] = useState()
+  const [ num, setNum ] = useState('')
   
-  const [ complexType, setComplexType ] = useState();
-  const [ detailAddress, setDetailAddress ] = useState();
-  const [ landCode, setLandCode ] = useState();
+  const [ complexType, setComplexType ] = useState()
+  const [ detailAddress, setDetailAddress ] = useState()
+  const [ landCode, setLandCode ] = useState()
 
-  const [ payModalisOpen, setPayModalisOpen ] = useState(false);
+  const [ payModalisOpen, setPayModalisOpen ] = useState(false)
 
-  const { state } = useLocation();
+  const { state } = useLocation()
 
   const overlayMargin = (window.innerHeight>812 ? ((window.innerHeight - 812) / 2) : '0px')
 
@@ -35,52 +36,52 @@ const CheckRental = props => {
   ]
 
   useEffect(() => {
-    setClickedIndex();
-    setQuestionNumber(0);
-    setGuarantee();
-    setNum('');
+    setClickedIndex()
+    setQuestionNumber(0)
+    setGuarantee()
+    setNum('')
 
-    setComplexType();
-    setDetailAddress();
-    setLandCode();
+    setComplexType()
+    setDetailAddress()
+    setLandCode()
   }, [])
 
   const buttonClicked = (index) => {
     if (!complexType && state) {
-      setComplexType(state.address.complexType);
-      setDetailAddress(state.address.detailAddress);
-      setLandCode(state.address.landCode);
+      setComplexType(state.address.complexType)
+      setDetailAddress(state.address.detailAddress)
+      setLandCode(state.address.landCode)
     }
     else if (state) {
       //
     }
     else {
-      setComplexType('Complex Type');
-      setDetailAddress('OOOO시 OO구 OO로 OOO OOOOO 제 O층 제OOO호');
-      setLandCode('OO동OOO-OO');
+      setComplexType('Complex Type')
+      setDetailAddress('OOOO시 OO구 OO로 OOO OOOOO 제 O층 제OOO호')
+      setLandCode('OO동OOO-OO')
     }
 
-    setClickedIndex(index);
+    setClickedIndex(index)
 
     switch (index) {
       case 1:
-        console.log('전세 clicked');
-        break;
+        console.log('전세 clicked')
+        break
       case 2:
-        console.log('월세 clicked');
-        break;
+        console.log('월세 clicked')
+        break
       case 3:
-        console.log('매매 clicked');
-        break;
+        console.log('매매 clicked')
+        break
       default:
-        console.log('default');
+        console.log('default')
     }
   }
 
   const nextClicked = (number) => {
     if (clickedIndex) {
       if (!guarantee)
-        setQuestionNumber(number);
+        setQuestionNumber(number)
       else
         console.log(guarantee)
     }
@@ -88,19 +89,19 @@ const CheckRental = props => {
 
   const inputPriceFormat = (str) => {
     const comma = (str) => {
-      str = String(str);
-      return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, "$1,");
-    };
+      str = String(str)
+      return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,')
+    }
     const uncomma = (str) => {
-      str = String(str);
-      return str.replace(/[^\d]+/g, "");
-    };
-    return comma(uncomma(str));
-  };
+      str = String(str)
+      return str.replace(/[^\d]+/g, '')
+    }
+    return comma(uncomma(str))
+  }
 
   const safetyButtonClicked = () => {
-    setGuarantee(document.getElementById('guaranteeInput').value);
-    setPayModalisOpen(true);
+    setGuarantee(document.getElementById('guaranteeInput').value)
+    setPayModalisOpen(true)
   }
 
   return (
@@ -132,7 +133,7 @@ const CheckRental = props => {
           padding: '6%'
           }}>
           <Link to='/search' style={{ textDecoration:'none', flex: '1' }}>
-            <button type="button" className="btn btn-outline-secondary"
+            <button type='button' className='btn btn-outline-secondary'
               style={{
                 margin: 'auto',
                 display: 'block',
@@ -145,7 +146,7 @@ const CheckRental = props => {
           </Link>
           <div style={{flex: '0.7'}}></div>
           <Link to='/checkRental' style={{ textDecoration:'none', flex: '1' }}>
-            <button type="button" className="btn btn-outline-secondary"
+            <button type='button' className='btn btn-outline-secondary'
               style={{
                 margin: 'auto',
                 display: 'block',
@@ -172,7 +173,7 @@ const CheckRental = props => {
           />
           <div style={{marginTop: '28em', color: 'grey', fontSize: '0.6em'}}>
             오픈 프로모션 (<strike>9,000원</strike>→4,900원)</div>
-          <button type="button" className="btn btn-outline-secondary"
+          <button type='button' className='btn btn-outline-secondary'
             style={{
               margin: 'auto',
               marginTop: '0.3em',
@@ -216,32 +217,36 @@ const CheckRental = props => {
             <div style={{fontSize: '0.8em', fontWeight: '700', textAlign: 'center'}}>[{landCode}]</div>
             <div style={{fontSize: '0.8em', fontWeight: '700', textAlign: 'center', marginTop: '18px'}}>주소로 확인하시겠습니까?</div>
             <div style={{display: 'flex', marginTop: '15px'}}>
-              <button type="button" className="btn btn-outline-primary"
+              <a href='#!' style={{textDecoration:'none', flex: '1'}}>
+              <button type='button' className='btn btn-outline-primary'
                 style={{
                   margin: 'auto',
                   display: 'block',
                   height: '30px',
                   fontWeight: '500',
                   borderRadius: '20px',
-                  flex: '1',
+                  width: '100%',
                   fontSize: '12px',
                   padding: '9px, 0px',
                 }}
                 onClick={() => setPayModalisOpen(false)}
               >취소</button>
-              <div style={{flex: '0.4'}}></div>
-              <button type="button" className="btn btn-primary"
-                style={{
-                  margin: 'auto',
-                  display: 'block',
-                  height: '30px',
-                  fontWeight: '500',
-                  borderRadius: '20px',
-                  flex: '1',
-                  fontSize: '12px',
-                  padding: '9px, 0px'
-                }}
-              >확인</button>
+              </a>
+              <div style={{flex: '0.2'}}></div>
+              <Link to='/report' style={{ textDecoration:'none', flex: '1' }}>
+                <button type='button' className='btn btn-primary'
+                  style={{
+                    margin: 'auto',
+                    display: 'block',
+                    height: '30px',
+                    fontWeight: '500',
+                    borderRadius: '20px',
+                    fontSize: '12px',
+                    padding: '9px, 0px',
+                    width: '100%'
+                  }}
+                >동의 및 결제</button>
+              </Link>
             </div>
             <div className={styles.tips} style={{marginTop: '25px'}}>
               결제 금액은 등기부 등본, 건축물 대장
@@ -263,7 +268,7 @@ const CheckRental = props => {
         </>
       }
     </Layout>
-  );
-};
+  )
+}
 
-export default CheckRental;
+export default CheckRental

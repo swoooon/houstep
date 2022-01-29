@@ -7,30 +7,30 @@ import styles from '../assets/Icon.module.scss'
 import { BsSearch } from 'react-icons/bs'
 
 const SearchAddress = (props) => {
-  const [ modalIsOpen, setModalIsOpen ] = useState(false);
-  const [ searchClicked, setSearchClicked ] = useState(false);
-  const [ address, setAddress ] = useState('');
-  const [ clickedBox, setClickedBox ] = useState();
-  const [ clickedIndex, setClickedIndex ] = useState(-1);
-  const [ indexBool, setIndexBool ] = useState(false);
+  const [ modalIsOpen, setModalIsOpen ] = useState(false)
+  const [ searchClicked, setSearchClicked ] = useState(false)
+  const [ address, setAddress ] = useState('')
+  const [ clickedBox, setClickedBox ] = useState()
+  const [ clickedIndex, setClickedIndex ] = useState(-1)
+  const [ indexBool, setIndexBool ] = useState(false)
 
   const overlayMargin = (window.innerHeight>812 ? ((window.innerHeight - 812) / 2) : '0px')
 
   // When modal closed, call function initialize()
   const initialize = () => {
-    setModalIsOpen(false);
-    setSearchClicked(false);
-    setClickedIndex(-1);
-    setIndexBool(false);
+    setModalIsOpen(false)
+    setSearchClicked(false)
+    setClickedIndex(-1)
+    setIndexBool(false)
   }
 
   // When search button in modal content clicked, call function checkAddress(value)
   const checkAddress = (value) => {
-    setSearchClicked(true);
-    setAddress(value);
+    setSearchClicked(true)
+    setAddress(value)
     // initialize state
-    setClickedIndex(-1);
-    setIndexBool(false);
+    setClickedIndex(-1)
+    setIndexBool(false)
   }
 
   const testDB = [
@@ -70,27 +70,27 @@ const SearchAddress = (props) => {
       "landCode": "상수동 240-23",
       "uniqueNo": "1234-1535-954320"
     },
-  ];
+  ]
 
-  let searchCount = 0;
-  let searchData = [];
+  let searchCount = 0
+  let searchData = []
 
   const testSearch = (keyword) => {
 
     testDB.map((house) => {
       if (house['detailAddress'].indexOf(keyword) !== -1) {
-        searchData.push(house);
-        searchCount++;
+        searchData.push(house)
+        searchCount++
       }
-    });
-    //console.log(searchData);
-  };
+    })
+    //console.log(searchData)
+  }
 
   const checkClicked = (box, index) => {
-    setClickedBox(box);
-    setClickedIndex(index);
-    setIndexBool(true);
-  };
+    setClickedBox(box)
+    setClickedIndex(index)
+    setIndexBool(true)
+  }
 
   return (
     <div>
@@ -214,9 +214,9 @@ const SearchAddress = (props) => {
         }
       </Modal>
     </div>
-  );
+  )
 }
 
 Modal.setAppElement('#root')
 
-export default SearchAddress;
+export default SearchAddress
