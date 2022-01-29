@@ -38,7 +38,7 @@ const Report = () => {
                 paddingRight: '45px'
               }} 
               type='text' placeholder='E-mail'/>
-            <div style={{marginTop: '22px', fontWeight: '700', fontSize: '0.93em', lineHeight: '1.8em', color: '#868686'}}>
+            <div style={{marginTop: '22px', fontWeight: '600', fontSize: '0.93em', lineHeight: '1.8em', color: '#868686'}}>
               <div>해당 주소지의 경우</div>
               <div>AI로는 판단이 어려워</div>
               <div>전문가의 분석이 필요합니다.</div>
