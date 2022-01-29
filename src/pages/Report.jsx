@@ -3,19 +3,19 @@ import React, { useState } from 'react'
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
 
 import Layout from '../components/LayoutNoHeader'
+import ReportComponent from '../components/ReportComponent'
 import ReportFailed from '../components/ReportFailed'
 
 const Report = () => {
-  const [ reportState, setReportState ] = useState(false)
+  const [ reportLoaded, setReportLoaded ] = useState(false)
+  const [ reportState, setReportState ] = useState('양호')
 
   return(
     <Layout>
-      {reportState &&
-        <>
-          <div>success</div>
-        </>
+      {reportLoaded &&
+        <ReportComponent state={reportState}/>
       }
-      {!reportState &&
+      {!reportLoaded &&
         <ReportFailed/>
       }
     </Layout>
