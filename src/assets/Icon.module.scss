@@ -215,7 +215,7 @@
   font-weight: 600;
 }
 
-.reportTabGood {
+.reportTabSafe {
   padding: 0;
 }
 .reportTabCaution {
@@ -225,35 +225,56 @@
   padding: 0;
 }
 
-.reportTabGood > li {
+.reportTabSafe > li {
   display: inline-block;
   text-align: center;
   width: 156px;
-  border-bottom: solid gray;
+  border-bottom: solid #BDBDBD;
+  color: #BDBDBD;
   font-weight: 600;
 }
 .reportTabCaution > li {
   display: inline-block;
   text-align: center;
   width: 156px;
-  border-bottom: solid gray;
+  border-bottom: solid #BDBDBD;
+  color: #BDBDBD;
   font-weight: 600;
 }
 .reportTabDanger > li {
   display: inline-block;
   text-align: center;
   width: 156px;
-  border-bottom: solid gray;
+  border-bottom: solid #BDBDBD;
+  color: #BDBDBD;
   font-weight: 600;
 }
 
-.reportTabGood .active {
+.reportTabSafe .active {
   color: #5087FF;
   border-bottom: solid #5087FF;
 }
 .reportTabCaution .active {
-  background-color: #000000;
+  color: #F6953C;
+  border-bottom: solid #F6953C;
 }
 .reportTabDanger .active {
-  background-color: #000000;
+  color: #FF5A56;
+  border-bottom: solid #FF5A56;
+}
+
+.titleSafe {
+  color: #5087FF;
+  font-weight: 700;
+  font-size: 1.7em;
+}
+.titleCaution {
+  color: #F6953C;
+  font-weight: 700;
+  font-size: 1.7em;
+}
+.titleDanger {
+  color: #FF5A56;
+  font-weight: 700;
+  font-size: 1.7em;
 }

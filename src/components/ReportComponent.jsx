@@ -16,7 +16,7 @@ const Report = (props) => {
   }, [props.state])
 
   const contents = {
-    0: <ReportSum/>,
+    0: <ReportSum state={reportState}/>,
     1: <ReportDetail/>
   }
 
@@ -24,16 +24,16 @@ const Report = (props) => {
     <>
       <Link to='/search'>
         <div style={{ display: 'flex' }}>
-            <img src={Previous} alt='Previous button'
-              style={{ marginLeft: '32px', marginTop: '35px', flex: '1' }}
-            />
-            <div style={{ flex: '100' }}></div>
-          </div>
+          <img src={Previous} alt='Previous button'
+            style={{ marginLeft: '32px', marginTop: '35px', flex: '1' }}
+          />
+          <div style={{ flex: '100' }}></div>
+        </div>
       </Link>
-      <div>리포트</div>
+      <div style={{fontWeight: '600', marginBottom: '6px'}}>리포트</div>
 
       <ul className={`${
-        reportState === 'Good' ? styles.reportTabGood :
+        reportState === 'Safe' ? styles.reportTabSafe :
         reportState === 'Caution' ? styles.reportTabCaution :
         reportState === 'Danger' ? styles.reportTabDanger : ''
       }`}>
@@ -41,7 +41,6 @@ const Report = (props) => {
         <li className={`${tabState === 1? styles.active: ''}`} onClick={() => setTabState(1)}>세부 리포트</li>
       </ul>
 
-      <div>{reportState}</div>
       <div className='contentArea'>
         {contents[tabState]}
       </div>
