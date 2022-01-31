@@ -17,8 +17,8 @@ const ReportFailed = () => {
           <Link to='/main'> <img src={Logo} alt='propsLogo'/> </Link> 
       </button>
       <div style={{clear: 'both'}}/>
-      <GreenIcon style={{marginTop: '105px'}}/>
-      <div style={{marginTop: '30px', fontWeight: '700', fontSize: '1.68em', color: '#43C368'}}>직원 확인이 필요합니다.</div>
+      <GreenIcon style={{marginTop: '70px'}}/>
+      <div style={{marginTop: '10px', fontWeight: '700', fontSize: '1.68em', color: '#43C368'}}>직원 확인이 필요합니다.</div>
       <div style={{marginTop: '23px', fontWeight: '700', fontSize: '0.95em', color: '#767676'}}>전문가가 직접 분석해드려요.</div>
       <form>
         <input className={styles.searchBar}
