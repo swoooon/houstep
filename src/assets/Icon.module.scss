@@ -214,3 +214,46 @@
   border-radius: 45px;
   font-weight: 600;
 }
+
+.reportTabGood {
+  padding: 0;
+}
+.reportTabCaution {
+  padding: 0;
+}
+.reportTabDanger {
+  padding: 0;
+}
+
+.reportTabGood > li {
+  display: inline-block;
+  text-align: center;
+  width: 156px;
+  border-bottom: solid gray;
+  font-weight: 600;
+}
+.reportTabCaution > li {
+  display: inline-block;
+  text-align: center;
+  width: 156px;
+  border-bottom: solid gray;
+  font-weight: 600;
+}
+.reportTabDanger > li {
+  display: inline-block;
+  text-align: center;
+  width: 156px;
+  border-bottom: solid gray;
+  font-weight: 600;
+}
+
+.reportTabGood .active {
+  color: #5087FF;
+  border-bottom: solid #5087FF;
+}
+.reportTabCaution .active {
+  background-color: #000000;
+}
+.reportTabDanger .active {
+  background-color: #000000;
+}
