@@ -1,8 +1,23 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
-const ReportSum = () => {
+import ReportSumSafe from './ReportSumSafe'
+import ReportSumCaution from './ReportSumCaution'
+import ReportSumDanger from './ReportSumDanger'
+
+const ReportSum = (props) => {
+
+  const [reportState, setReportState] = useState()
+
+  useEffect(() => {
+    setReportState(props.state)
+  }, [props.state])
+
   return (
-    <div>This is Report Sum Component</div>
+    <>
+      {reportState === 'Safe' && <ReportSumSafe/>}
+      {reportState === 'Caution' && <ReportSumCaution/>}
+      {reportState === 'Danger' && <ReportSumDanger/>}
+    </>
   )
 }
 
