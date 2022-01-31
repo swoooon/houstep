@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
 import Layout from '../components/LayoutNoHeader'
 import styles from '../assets/Icon.module.scss'
 import Logo from '../assets/logoGreen.svg'
-import { ReactComponent as GreenIcon } from '../assets/greenIcon.svg'
+import { ReactComponent as GreenIcon } from '../assets/iconGreen.svg'
 
 const ReportFailed = () => {
   return(

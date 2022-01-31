@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
 
 import Layout from '../components/LayoutNoHeader'
 import styles from '../assets/Icon.module.scss'
-import Logo from '../assets/orangeIcon.svg'
+import Logo from '../assets/logoOrange.svg'
 import { ReactComponent as AttentionBar } from '../assets/attentionBar.svg'
 import { ReactComponent as WarningIcon } from '../assets/warningIcon.svg'
 import { ReactComponent as AttentionReport } from '../assets/attentionReport.svg'
