@@ -9,10 +9,14 @@ const ReportSum = (props) => {
 
   const [reportState, setReportState] = useState()
   const highlightProps = {
-    joint: false,
+    joint: true,
     entireDanger: '주의1',
     buildType: 'AP',
-    mortgage: 100000000
+    mortgage: 100000000,
+    ownership: '회사',
+    isGr2: true,
+    eulguDangerList: ['임차권'],
+    kapguDangerList: ['가처분'],
   }
 
   useEffect(() => {

@@ -17,7 +17,7 @@ const Report = (props) => {
 
   const contents = {
     0: <ReportSum state={reportState}/>,
-    1: <ReportDetail/>
+    1: <ReportDetail state={reportState}/>
   }
 
   return (
@@ -44,6 +44,18 @@ const Report = (props) => {
       <div className='contentArea'>
         {contents[tabState]}
       </div>
+
+      {tabState === 0 && 
+        <>
+          <div className={styles.summaryDetails} style={{marginTop: '60px'}}>
+            <div>더 자세히 알고싶어요!</div>
+          </div>
+          <div className={styles.summaryMents} style={{marginTop: '30px'}}>
+            <div>해당 리포트는 AI가 부동산 공부(公簿)의 사실관계를 나열한 것으로</div>
+            <div>법률자문을 포함하고 있지 않습니다.</div>
+          </div>
+        </>
+      }
     </>
   )
 }
