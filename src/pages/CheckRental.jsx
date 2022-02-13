@@ -220,14 +220,14 @@ const CheckRental = props => {
               <a href='#!' style={{textDecoration:'none', flex: '1'}}>
               <button type='button' className='btn btn-outline-primary'
                 style={{
-                  margin: 'auto',
-                  display: 'block',
                   height: '30px',
                   fontWeight: '500',
                   borderRadius: '20px',
                   width: '100%',
                   fontSize: '12px',
-                  padding: '9px, 0px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
                 }}
                 onClick={() => setPayModalisOpen(false)}
               >취소</button>
@@ -236,14 +236,14 @@ const CheckRental = props => {
               <Link to='/report' style={{ textDecoration:'none', flex: '1' }}>
                 <button type='button' className='btn btn-primary'
                   style={{
-                    margin: 'auto',
-                    display: 'block',
                     height: '30px',
                     fontWeight: '500',
                     borderRadius: '20px',
                     fontSize: '12px',
-                    padding: '9px, 0px',
-                    width: '100%'
+                    width: '100%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
                   }}
                 >동의 및 결제</button>
               </Link>
