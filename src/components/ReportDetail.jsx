@@ -1,8 +1,35 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
-const ReportDetail = () => {
+import ReportDetailSafe from './ReportDetailSafe'
+import ReportDetailCaution from './ReportDetailCaution'
+import ReportDetailDanger from './ReportDetailDanger'
+
+const ReportDetail = (props) => {
+
+  const [reportState, setReportState] = useState()
+
+  useEffect(() => {
+    setReportState(props.state)
+  }, [props.state])
+
   return (
-    <div>This is Report Detail Component</div>
+    <>
+      {reportState === 'Safe' && 
+        <>
+          <ReportDetailSafe/>
+        </>
+      }
+      {reportState === 'Caution' && 
+        <>
+          <ReportDetailCaution/>
+        </>
+      }
+      {reportState === 'Danger' && 
+        <>
+          <ReportDetailDanger/>
+        </>
+      }
+    </>
   )
 }
 
