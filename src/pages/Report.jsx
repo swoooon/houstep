@@ -8,7 +8,7 @@ import ReportFailed from '../components/ReportFailed'
 
 const Report = () => {
   const [ reportLoaded, setReportLoaded ] = useState(true)
-  const [ reportState, setReportState ] = useState('Caution')  // Safe, Caution, Danger
+  const [ reportState, setReportState ] = useState('Safe')  // Safe, Caution, Danger
 
   return(
     <Layout>
