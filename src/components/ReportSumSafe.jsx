@@ -14,7 +14,7 @@ const ReportSumSafe = () => {
         <div style={{fontWeight: '600', color: '#BDBDBD', flex: '1'}}>위험</div>
       </div>
       <Icon/>
-      <div className={styles.titleSafe}>몇가지 주의가 필요해요</div>
+      <div className={styles.titleSafe}>몇 가지 주의가 필요해요</div>
       <div style={{marginTop: '20px', fontWeight: '600', fontSize: '0.95em', color: 'gray'}}>아래 항목을 확인해주세요</div>
     </div>
   )
