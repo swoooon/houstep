@@ -11,13 +11,13 @@ import Report from '../pages/Report'
 
 const Root = () => (
   <Routes>
-    <Route path='/' element={Home()} />
-    <Route path='/main' element={Main()} />
-    <Route path='/search' element={Search()} />
-    <Route path='/checkRental' element={CheckRental()} />
-    <Route path='/noAddress' element={NoAddress()} />
-    <Route path='/attention' element={Attention()} />
-    <Route path='/report' element={Report()} />
+    <Route path='/' element={<Home/>} />
+    <Route path='/main' element={<Main/>} />
+    <Route path='/search' element={<Search/>} />
+    <Route path='/checkRental' element={<CheckRental/>} />
+    <Route path='/noAddress' element={<NoAddress/>} />
+    <Route path='/attention' element={<Attention/>} />
+    <Route path='/report' element={<Report/>} />
   </Routes>
 )
 
