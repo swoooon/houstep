@@ -13,10 +13,12 @@ const CheckRental = props => {
   const [ questionNumber, setQuestionNumber ] = useState(0)
   const [ guarantee, setGuarantee ] = useState()
   const [ num, setNum ] = useState('')
+
+  const [ address, setAddress ] = useState()
   
-  const [ complexType, setComplexType ] = useState()
-  const [ detailAddress, setDetailAddress ] = useState()
-  const [ landCode, setLandCode ] = useState()
+  // const [ complexType, setComplexType ] = useState()
+  // const [ detailAddress, setDetailAddress ] = useState()
+  // const [ landCode, setLandCode ] = useState()
 
   const [ payModalisOpen, setPayModalisOpen ] = useState(false)
 
@@ -41,24 +43,32 @@ const CheckRental = props => {
     setGuarantee()
     setNum('')
 
-    setComplexType()
-    setDetailAddress()
-    setLandCode()
+    setAddress()
+    // setComplexType()
+    // setDetailAddress()
+    // setLandCode()
   }, [])
 
   const buttonClicked = (index) => {
-    if (!complexType && state) {
-      setComplexType(state.address.complexType)
-      setDetailAddress(state.address.detailAddress)
-      setLandCode(state.address.landCode)
+    if (!address && state) {
+      setAddress(state.address)
+      // console.log(state)
+      // setComplexType(state.address.complexType)
+      // setDetailAddress(state.address.detailAddress)
+      // setLandCode(state.address.landCode)
     }
     else if (state) {
       //
     }
     else {
-      setComplexType('Complex Type')
-      setDetailAddress('OOOO시 OO구 OO로 OOO OOOOO 제 O층 제OOO호')
-      setLandCode('OO동OOO-OO')
+      setAddress({
+        complexType: 'Complex Type',
+        detailAddress: 'OOOO시 OO구 OO로 OOO OOOOO 제 O층 제OOO호',
+        landCode: 'OO동OOO-OO'
+      })
+      // setComplexType('Complex Type')
+      // setDetailAddress('OOOO시 OO구 OO로 OOO OOOOO 제 O층 제OOO호')
+      // setLandCode('OO동OOO-OO')
     }
 
     setClickedIndex(index)
@@ -213,8 +223,8 @@ const CheckRental = props => {
             }}
           >
             <div style={{fontSize: '1.1em', fontWeight: '700', textAlign: 'center'}}>4,900원 결제하기</div>
-            <div style={{fontSize: '0.8em', fontWeight: '700', textAlign: 'center', marginTop: '23px'}}>{detailAddress}</div>
-            <div style={{fontSize: '0.8em', fontWeight: '700', textAlign: 'center'}}>[{landCode}]</div>
+            <div style={{fontSize: '0.8em', fontWeight: '700', textAlign: 'center', marginTop: '23px'}}>{address.detailAddress}</div>
+            <div style={{fontSize: '0.8em', fontWeight: '700', textAlign: 'center'}}>[{address.landCode}]</div>
             <div style={{fontSize: '0.8em', fontWeight: '700', textAlign: 'center', marginTop: '18px'}}>주소로 확인하시겠습니까?</div>
             <div style={{display: 'flex', marginTop: '15px'}}>
               <a href='#!' style={{textDecoration:'none', flex: '1'}}>
@@ -233,7 +243,9 @@ const CheckRental = props => {
               >취소</button>
               </a>
               <div style={{flex: '0.2'}}></div>
-              <Link to='/report' style={{ textDecoration:'none', flex: '1' }}>
+              <Link to={'/report'}
+                state={{ address: address }}
+                style={{ textDecoration:'none', flex: '1' }}>
                 <button type='button' className='btn btn-primary'
                   style={{
                     height: '30px',

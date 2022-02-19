@@ -9,7 +9,7 @@ const ReportSum = (props) => {
 
   const [reportState, setReportState] = useState()
   const highlightProps = {
-    joint: true,
+    joint: false,
     entireDanger: '주의1',
     buildType: 'AP',
     mortgage: 100000000,

@@ -6,18 +6,21 @@ import styles from '../assets/Icon.module.scss'
 import ReportSum from './ReportSum'
 import ReportDetail from './ReportDetail'
 import Previous from '../assets/previous.svg'
+import NextWarn from '../assets/nextWarn.svg'
 
 const Report = (props) => {
   const [ reportState, setReportState ] = useState()
   const [ tabState, setTabState ] = useState(0)
+  const [ address, setAddress ] = useState()
 
   useEffect(() => {
     setReportState(props.state)
-  }, [props.state])
+    setAddress(props.address)
+  }, [props.state, props.address])
 
   const contents = {
     0: <ReportSum state={reportState}/>,
-    1: <ReportDetail state={reportState}/>
+    1: <ReportDetail state={reportState} address={address}/>
   }
 
   return (
@@ -48,7 +51,7 @@ const Report = (props) => {
       {tabState === 0 && 
         <>
           <div className={styles.summaryDetails} style={{marginTop: '60px'}}>
-            <div>더 자세히 알고싶어요!</div>
+            <div style={{marginLeft: '20px'}} onClick={() => setTabState(1)}>더 자세히 알고싶어요! <img className={styles.summaryNext} src={NextWarn} alt='Next button'/> </div>
           </div>
           <div className={styles.summaryMents} style={{marginTop: '30px'}}>
             <div>해당 리포트는 AI가 부동산 공부(公簿)의 사실관계를 나열한 것으로</div>
