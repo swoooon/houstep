@@ -4,25 +4,31 @@ import ReportDetailSafe from './ReportDetailSafe'
 import ReportDetailCaution from './ReportDetailCaution'
 import ReportDetailDanger from './ReportDetailDanger'
 import ReportContent from './ReportContent'
+import ReportAddress from './ReportDetailAddress'
 
 import styles from '../assets/Icon.module.scss'
 
 const ReportDetail = (props) => {
   const [ reportState, setReportState ] = useState()
-  const [ address, setAddress ] = useState({complexType: '', detailAddress: '', landCode: ''})
+  const [ address, setAddress ] = useState()
+  const [ data, setData ] = useState()
 
   useEffect(() => {
     setReportState(props.state)
     setAddress(props.address)
-  }, [props.state, props.address])
+    setData(props.data)
+  }, [props])
 
   return (
     <div>
-      {reportState === 'Safe' && 
+      {reportState === 'Safe' &&  // need change to one switch case
         <>
           <div className={styles.safeBackground}>
             <ReportDetailSafe/>
-            <ReportContent address={address}/>
+            <ReportAddress address={address}/>
+          </div>
+          <div className={styles.safeBackgroundFull}>
+            <ReportContent data={data}/>
           </div>
         </>
       }
@@ -30,7 +36,10 @@ const ReportDetail = (props) => {
         <>
           <div className={styles.cautionBackground}>
             <ReportDetailCaution/>
-            <ReportContent address={address}/>
+            <ReportAddress address={address}/>
+          </div>
+          <div className={styles.cautionBackgroundFull}>
+            <ReportContent data={data}/>
           </div>
         </>
       }
@@ -38,7 +47,9 @@ const ReportDetail = (props) => {
         <>
           <div className={styles.dangerBackground}>
             <ReportDetailDanger/>
-            <ReportContent address={address}/>
+          </div>
+          <div className={styles.dangerBackgroundFull}>
+            <ReportContent data={data}/>
           </div>
         </>
       }
