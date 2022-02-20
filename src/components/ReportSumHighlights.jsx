@@ -5,7 +5,7 @@ import { ReactComponent as Bang } from '../assets/bangLogo.svg'
 const ReportSumHighlights = (props) => {
   const [data, setData] = useState({
     joint: false,
-    entireDanger: '',
+    mortgageDanger: '',
     buildType: '',
     mortgage: 0,
     ownership: '',
@@ -17,8 +17,8 @@ const ReportSumHighlights = (props) => {
   const million = 100000000
 
   useEffect(() => {
-    setData(props.props)
-  }, [props.props])
+    setData(props.data)
+  }, [props])
   //console.log(data)
 
   return (
@@ -46,7 +46,7 @@ const ReportSumHighlights = (props) => {
             {(data.buildType !== 'BU' && data.buildType !== 'GR') &&
               <>
                 {
-                  data.entireDanger === '위험' &&
+                  data.mortgageDanger === '위험' &&
                     <>
                       <Bang className={styles.summaryBang}/>
                       <div className={styles.summaryDiv}>빚이 약 {data.mortgage/million}억원인 집이에요!</div>
@@ -55,7 +55,7 @@ const ReportSumHighlights = (props) => {
                     </>
                 }
                 {
-                  data.entireDanger === '주의1' &&
+                  data.mortgageDanger === '주의1' &&
                     <>
                       <Bang className={styles.summaryBang}/>
                       <div className={styles.summaryDiv}>빚이 약 {data.mortgage/million}억원인 집이에요!</div>
@@ -64,7 +64,7 @@ const ReportSumHighlights = (props) => {
                     </>
                 }
                 {
-                  data.entireDanger === '주의2' &&
+                  data.mortgageDanger === '주의2' &&
                     <>
                       <Bang className={styles.summaryBang}/>
                       <div className={styles.summaryDiv}>빚이 약 {data.mortgage/million}억원인 집이에요!</div>
@@ -73,7 +73,7 @@ const ReportSumHighlights = (props) => {
                     </>
                 }
                 {
-                  data.entireDanger === '안전' &&
+                  data.mortgageDanger === '안전' &&
                     <>
                       <Bang className={styles.summaryBang}/>
                       <div className={styles.summaryDiv}>빚이 없는 집이에요!</div>

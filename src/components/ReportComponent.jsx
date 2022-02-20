@@ -12,15 +12,17 @@ const Report = (props) => {
   const [ reportState, setReportState ] = useState()
   const [ tabState, setTabState ] = useState(0)
   const [ address, setAddress ] = useState()
+  const [ data, setData ] = useState()
 
   useEffect(() => {
     setReportState(props.state)
     setAddress(props.address)
-  }, [props.state, props.address])
+    setData(props.data)
+  }, [props])
 
   const contents = {
-    0: <ReportSum state={reportState}/>,
-    1: <ReportDetail state={reportState} address={address}/>
+    0: <ReportSum state={reportState} data={data}/>,
+    1: <ReportDetail state={reportState} address={address} data={data}/>
   }
 
   return (

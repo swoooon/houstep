@@ -11,6 +11,16 @@ const Report = () => {
   const [ reportLoaded, setReportLoaded ] = useState(true)
   const [ reportState, setReportState ] = useState('Safe')  // Safe, Caution, Danger
   const [ address, setAddress ] = useState()
+  const [ data, setData ] = useState({
+    joint: true,
+    mortgageDanger: '주의1',
+    buildType: 'AP',
+    mortgage: 100000000,
+    ownership: '회사',
+    isGr2: true,
+    eulguDangerList: ['임차권'],
+    kapguDangerList: ['가처분'],
+  })
 
   const props = useLocation()
 
@@ -21,7 +31,7 @@ const Report = () => {
   return(
     <Layout>
       {reportLoaded &&
-        <ReportComponent state={reportState} address={address}/>
+        <ReportComponent state={reportState} address={address} data={data}/>
       }
       {!reportLoaded &&
         <ReportFailed/>
