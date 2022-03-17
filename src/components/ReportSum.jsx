@@ -8,40 +8,32 @@ import ReportSumHighlights from './ReportSumHighlights'
 
 const ReportSum = (props) => {
 
-  const [reportState, setReportState] = useState()
-  const highlightProps = {
-    joint: true,
-    entireDanger: '주의1',
-    buildType: 'AP',
-    mortgage: 100000000,
-    ownership: '회사',
-    isGr2: true,
-    eulguDangerList: ['임차권'],
-    kapguDangerList: ['가처분'],
-  }
+  const [ reportState, setReportState ] = useState()
+  const [ data, setData ] = useState()
 
   useEffect(() => {
     setReportState(props.state)
-  }, [props.state])
+    setData(props.data)
+  }, [props])
 
   return (
     <>
       {reportState === 'Safe' && 
         <>
           <ReportSumSafe/>
-          <ReportSumHighlights props={highlightProps}/>
+          <ReportSumHighlights data={data}/>
         </>
       }
       {reportState === 'Caution' && 
         <>
           <ReportSumCaution/>
-          <ReportSumHighlights props={highlightProps}/>
+          <ReportSumHighlights data={data}/>
         </>
       }
       {reportState === 'Danger' && 
         <>
           <ReportSumDanger/>
-          <ReportSumHighlights props={highlightProps}/>
+          <ReportSumHighlights data={data}/>
         </>
       }
       {reportState === 'Free' && 

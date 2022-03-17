@@ -44,7 +44,7 @@ const ReportContent = (props) => {
             <div className={styles.detailRiskCalculator}>
               <div style={{fontSize: '14px', fontWeight: 700}}>위험도 계산식</div>
               <span style={{background: 'linear-gradient(to top, #FFCDC9 30%, transparent 50%)', fontSize: '13px', fontWeight: 700}}>
-                내 보증금 + 선순위보증금 + 빚 〈 <span style={{textDecoration: 'underline'}}>예상거래가격</span> × 0.7
+                보증금 + 빚 〈 <span style={{textDecoration: 'underline'}}>예상거래가격</span> × 0.7
               </span>
             </div>
             <p className={styles.detailTextGray}>빚과 보증금의 합산액이 예상 거래가의 70% 이상이면 위험하다고 봐요!<br/><br/></p>

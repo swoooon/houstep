@@ -25,6 +25,7 @@
 
 - beomxtone - Beomseok Seo - [beomxtone@gmail.com](beomxtone@gmail.com)
 - swoooon - Dohyeon Kim - [bizdori01@gmail.com](bizdori01@gmail.com)
+- YeonjuSeo - Yeonju Seo - [tjduswn1219@gmail.com](tjduswn1219@gmail.com)
 
 
 ## Dev Stack
