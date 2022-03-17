@@ -29,7 +29,21 @@ const ReportDetail = (props) => {
           <ReportDetailDanger/>
         </>
       }
+<<<<<<< Updated upstream
     </>
+=======
+      {reportState === 'Free' && 
+        <>
+          <div className={styles.dangerBackground}>
+            <ReportDetailDanger/>
+          </div>
+          <div className={styles.dangerBackgroundFull}>
+            <ReportContent data={data}/>
+          </div>
+        </>
+      }
+    </div>
+>>>>>>> Stashed changes
   )
 }
 
