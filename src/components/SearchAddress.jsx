@@ -155,7 +155,7 @@ const SearchAddress = (props) => {
                   </div>
                 </ul>
                 {indexBool ? (  // if user select address,
-                  <Link to='/checkRental' state={{ address: searchData[clickedIndex] }}
+                  <Link to='/checkRentalFree' state={{ address: searchData[clickedIndex] }} //checkRental
                     style={{textDecoration:'none'}}>
                     <button type="button" className="btn btn-outline-secondary"
                       style={{

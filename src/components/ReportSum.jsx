@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 import ReportSumSafe from './ReportSumSafe'
 import ReportSumCaution from './ReportSumCaution'
 import ReportSumDanger from './ReportSumDanger'
+import ReportSumFree from './ReportSumFree'
 import ReportSumHighlights from './ReportSumHighlights'
 
 const ReportSum = (props) => {
@@ -41,6 +42,12 @@ const ReportSum = (props) => {
         <>
           <ReportSumDanger/>
           <ReportSumHighlights props={highlightProps}/>
+        </>
+      }
+      {reportState === 'Free' && 
+        <>
+          <ReportSumFree/>
+          <ReportSumHighlights data={data}/>
         </>
       }
     </>
