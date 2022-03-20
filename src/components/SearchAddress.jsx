@@ -14,6 +14,7 @@ const SearchAddress = (props) => {
   const [ clickedBox, setClickedBox ] = useState()
   const [ clickedIndex, setClickedIndex ] = useState(-1)
   const [ indexBool, setIndexBool ] = useState(false)
+
   const [ loading, setLoading ] = useState(false)
   const [ data, setData ] = useState([])
 
@@ -53,6 +54,7 @@ const SearchAddress = (props) => {
       setLoading(false)
     })
     return(searchData)
+
   }
 
   const checkClicked = (box, index) => {
