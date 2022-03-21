@@ -8,7 +8,7 @@ import Layout from '../components/Layout'
 import styles from '../assets/Icon.module.scss'
 import { ReactComponent as ServicePreparing } from '../assets/servicePreparing.svg'
 
-const CheckRental = props => {
+const CheckRentalFree = props => {
   const [ clickedIndex, setClickedIndex ] = useState()
   const [ questionNumber, setQuestionNumber ] = useState(0)
   const [ guarantee, setGuarantee ] = useState()
@@ -155,7 +155,7 @@ const CheckRental = props => {
             >이전</button>
           </Link>
           <div style={{flex: '0.7'}}></div>
-          <Link to='/checkRental' style={{ textDecoration:'none', flex: '1' }}>
+          <Link to='/checkRentalFree' style={{ textDecoration:'none', flex: '1' }}>
             <button type='button' className='btn btn-outline-secondary'
               style={{
                 margin: 'auto',
@@ -181,92 +181,25 @@ const CheckRental = props => {
             value={num}
             onChange={(e) => setNum(inputPriceFormat(e.target.value))}
           />
-          <div style={{marginTop: '28em', color: 'grey', fontSize: '0.6em'}}>
-            오픈 프로모션 (<strike>9,000원</strike>→4,900원)</div>
-          <button type='button' className='btn btn-outline-secondary'
-            style={{
-              margin: 'auto',
-              marginTop: '0.3em',
-              display: 'block',
-              width: '85%',
-              fontWeight: '600',
-              color: 'white',
-              backgroundColor: '#1381FF',
-              border: '1px solid lightgray',
-              borderRadius: '20px',
-              borderColor: 'transparent'
-            }}
-            onClick={() => safetyButtonClicked()}
-          >안전도 알아보러 가기</button>
-          <Modal isOpen={payModalisOpen}
-            style={{
-              overlay: {
-                position: 'fixed',
-                width: '375px',
-                height: '812px',
-                margin: '0 auto',
-                marginTop: overlayMargin,
-                backgroundColor: 'rgba(0, 0, 0, 0.85)'
-              },
-              content: {
-                position: 'absolute',
-                width: '293px',
-                height: '309px',
-                left: '41px', // (overlay width - content width) / 2
-                top: '251.5px', // (overlay height - content height) / 2
-                borderRadius: '20px',
-                paddingLeft: '32px',
-                paddingRight: '32px',
-                paddingTop: '30px',
-                paddingBottom: '30px'
-              }
-            }}
-          >
-            <div style={{fontSize: '1.1em', fontWeight: '700', textAlign: 'center'}}>4,900원 결제하기</div>
-            <div style={{fontSize: '0.8em', fontWeight: '700', textAlign: 'center', marginTop: '23px'}}>{address.detailAddress}</div>
-            <div style={{fontSize: '0.8em', fontWeight: '700', textAlign: 'center'}}>[{address.landCode}]</div>
-            <div style={{fontSize: '0.8em', fontWeight: '700', textAlign: 'center', marginTop: '18px'}}>주소로 확인하시겠습니까?</div>
-            <div style={{display: 'flex', marginTop: '15px'}}>
-              <a href='#!' style={{textDecoration:'none', flex: '1'}}>
-              <button type='button' className='btn btn-outline-primary'
+          <Link to={'/reportFree'}
+              state={{ address: address }}
+              style={{ textDecoration:'none', flex: '1' }}>
+              <button type='button' className='btn btn-outline-secondary'
                 style={{
-                  height: '30px',
-                  fontWeight: '500',
+                  margin: 'auto',
+                  marginTop: '17em',
+                  display: 'block',
+                  width: '85%',
+                  fontWeight: '600',
+                  color: 'white',
+                  backgroundColor: '#1381FF',
+                  border: '1px solid lightgray',
                   borderRadius: '20px',
-                  width: '100%',
-                  fontSize: '12px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center'
+                  borderColor: 'transparent'
                 }}
-                onClick={() => setPayModalisOpen(false)}
-              >취소</button>
-              </a>
-              <div style={{flex: '0.2'}}></div>
-              <Link to={'/report'}
-                state={{ address: address }}
-                style={{ textDecoration:'none', flex: '1' }}>
-                <button type='button' className='btn btn-primary'
-                  style={{
-                    height: '30px',
-                    fontWeight: '500',
-                    borderRadius: '20px',
-                    fontSize: '12px',
-                    width: '100%',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center'
-                  }}
-                >동의 및 결제</button>
-              </Link>
-            </div>
-            <div className={styles.tips} style={{marginTop: '25px'}}>
-              결제 금액은 등기부 등본, 건축물 대장
-            </div>
-            <div className={styles.tips}>
-              서류 발급 대행비이며 안전도 해석 서비스는 무료입니다.
-            </div>
-          </Modal>
+                onClick={() => safetyButtonClicked()}
+              >안전도 알아보러 가기</button>
+          </Link>
         </>
       }
 
@@ -283,4 +216,4 @@ const CheckRental = props => {
   )
 }
 
-export default CheckRental
+export default CheckRentalFree

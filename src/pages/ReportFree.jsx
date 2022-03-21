@@ -4,17 +4,17 @@ import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
 
 import Layout from '../components/LayoutNoHeader'
-import ReportComponent from '../components/ReportComponent'
+import ReportComponentFree from '../components/ReportComponentFree'
 import ReportFailed from '../components/ReportFailed'
 
-const Report = () => {
+const ReportFree = () => {
   const [ reportLoaded, setReportLoaded ] = useState(true)
-  const [ reportState, setReportState ] = useState('Safe')  // Safe, Caution, Danger
+  const [ reportState, setReportState ] = useState('Free')  // Safe, Caution, Danger, Free
   const [ address, setAddress ] = useState()
   const [ data, setData ] = useState({
-    joint: true,
-    mortgageDanger: '주의1',
-    buildType: 'AP',
+    joint: false,
+    mortgageDanger: '안전',
+    buildType: 'JT',
     mortgage: 100000000,
     ownership: '회사',
     isGr2: true,
@@ -31,7 +31,7 @@ const Report = () => {
   return(
     <Layout>
       {reportLoaded &&
-        <ReportComponent state={reportState} address={address} data={data}/>
+        <ReportComponentFree state={reportState} address={address} data={data}/>
       }
       {!reportLoaded &&
         <ReportFailed/>
@@ -40,4 +40,4 @@ const Report = () => {
   )
 }
 
-export default Report;
+export default ReportFree;

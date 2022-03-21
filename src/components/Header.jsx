@@ -18,8 +18,8 @@ const Header = () => {
     <header className={styles.header}>
       <div className={styles.contents}>
         <button className={logoStyles.buttonLogo} type='button'
-         onClick={() => window.location.replace('/main')}> 
-          <Link to='/main'> <img src={Logo} alt='propsLogo'/> </Link> 
+         onClick={() => window.location.replace('/search')}> 
+          <Link to='/search'> <img src={Logo} alt='propsLogo'/> </Link> 
         </button>
         <MenuIcon onClick={() => setModalIsOpen(true)}/>
         <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}
