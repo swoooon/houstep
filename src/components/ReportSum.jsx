@@ -5,6 +5,7 @@ import ReportSumCaution from './ReportSumCaution'
 import ReportSumDanger from './ReportSumDanger'
 import ReportSumFree from './ReportSumFree'
 import ReportSumHighlights from './ReportSumHighlights'
+import ReportSumHighlightsFree from './ReportSumHighlightsFree'
 
 const ReportSum = (props) => {
 
@@ -39,7 +40,7 @@ const ReportSum = (props) => {
       {reportState === 'Free' && 
         <>
           <ReportSumFree/>
-          <ReportSumHighlights data={data}/>
+          <ReportSumHighlightsFree data={data}/>
         </>
       }
     </>

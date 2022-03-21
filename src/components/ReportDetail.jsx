@@ -3,7 +3,9 @@ import React, { useState, useEffect } from 'react'
 import ReportDetailSafe from './ReportDetailSafe'
 import ReportDetailCaution from './ReportDetailCaution'
 import ReportDetailDanger from './ReportDetailDanger'
+import ReportDetailFree from './ReportDetailFree'
 import ReportContent from './ReportContent'
+import ReportContentFree from './ReportContentFree'
 import ReportAddress from './ReportDetailAddress'
 
 import styles from '../assets/Icon.module.scss'
@@ -47,6 +49,7 @@ const ReportDetail = (props) => {
         <>
           <div className={styles.dangerBackground}>
             <ReportDetailDanger/>
+            <ReportAddress address={address}/>
           </div>
           <div className={styles.dangerBackgroundFull}>
             <ReportContent data={data}/>
@@ -55,11 +58,12 @@ const ReportDetail = (props) => {
       }
       {reportState === 'Free' && 
         <>
-          <div className={styles.dangerBackground}>
-            <ReportDetailDanger/>
+          <div className={styles.safeBackground}>
+            <ReportDetailFree/>
+            <ReportAddress address={address}/>
           </div>
-          <div className={styles.dangerBackgroundFull}>
-            <ReportContent data={data}/>
+          <div className={styles.safeBackgroundFull}>
+            <ReportContentFree data={data}/>
           </div>
         </>
       }

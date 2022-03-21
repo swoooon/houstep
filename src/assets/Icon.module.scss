@@ -273,6 +273,10 @@
   color: #FF5A56;
   border-bottom: solid #FF5A56;
 }
+.reportTabFree .active {
+  color: #5087FF;
+  border-bottom: solid #5087FF;
+}
 
 .titleSafe {
   color: #5087FF;
@@ -286,6 +290,11 @@
 }
 .titleDanger {
   color: #FF5A56;
+  font-weight: 700;
+  font-size: 1.7em;
+}
+.titleFree {
+  color: #5087FF;
   font-weight: 700;
   font-size: 1.7em;
 }

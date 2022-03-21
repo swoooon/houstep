@@ -43,8 +43,8 @@ const Report = (props) => {
         reportState === 'Danger' ? styles.reportTabDanger : 
         reportState === 'Free' ? styles.reportTabFree : ''
       }`}>
-        <li className={`${tabState === 0? styles.active: ''}`} onClick={() => setTabState(0)}>요약 리포트</li>
-        <li className={`${tabState === 1? styles.active: ''}`} onClick={() => setTabState(1)}>세부 리포트</li>
+        <li className={`${tabState === 0? styles.active: ''}`} onClick={() => setTabState(0)}>맞춤형 유의사항</li>
+        <li className={`${tabState === 1? styles.active: ''}`} onClick={() => setTabState(1)}>맞춤형 리포트</li>
       </ul>
 
       <div className='contentArea'>
