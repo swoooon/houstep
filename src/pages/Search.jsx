@@ -15,7 +15,6 @@ const Search = () => {
   return (
     <Layout>
       <Icon className={styles.icon}/>
-      <Props className={styles.logo}/>
       <SearchAddress/>
       <div className={styles.intro} style={introStyle}> 안전한 계약을 위한 첫걸음 </div>
     </Layout>

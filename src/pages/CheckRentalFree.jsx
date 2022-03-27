@@ -134,41 +134,37 @@ const CheckRentalFree = props => {
             onClick={() => buttonClicked(3)}>매매</button>
         </ul>
 
-        
-        <div style={{ 
-          position: 'absolute', 
-          display: 'flex', 
-          width: '375px',
-          top: '700px',
-          padding: '6%'
-          }}>
-          <Link to='/search' style={{ textDecoration:'none', flex: '1' }}>
-            <button type='button' className='btn btn-outline-secondary'
-              style={{
-                margin: 'auto',
-                display: 'block',
-                width: '100%',
-                fontWeight: '600',
-                border: '1px solid lightgray',
-                borderRadius: '20px'
-              }}
-            >이전</button>
-          </Link>
-          <div style={{flex: '0.7'}}></div>
-          <Link to='/checkRentalFree' style={{ textDecoration:'none', flex: '1' }}>
-            <button type='button' className='btn btn-outline-secondary'
-              style={{
-                margin: 'auto',
-                display: 'block',
-                width: '100%',
-                fontWeight: '600',
-                border: '1px solid lightgray',
-                borderRadius: '20px'
-              }}
-              onClick={() => nextClicked(1)}
-            >다음</button>
-          </Link>
-        </div>
+        <Link to='/search' style={{ textDecoration:'none'}}>
+          <button type='button' className='btn btn-outline-secondary'
+            style={{
+              margin: 'auto',
+              marginLeft: '7.5%',
+              marginTop: '3em',
+              float: 'left',
+              display: 'block',
+              width: '35%',
+              fontWeight: '600',
+              border: '1px solid lightgray',
+              borderRadius: '20px'
+            }}
+          >이전</button>
+        </Link>
+        <Link to='/checkRentalFree' style={{ textDecoration:'none'}}>
+          <button type='button' className='btn btn-outline-secondary'
+            style={{
+              margin: 'auto',
+              marginRight: '7.5%',
+              marginTop: '3em',
+              float: 'right',
+              display: 'block',
+              width: '35%',
+              fontWeight: '600',
+              border: '1px solid lightgray',
+              borderRadius: '20px'
+            }}
+            onClick={() => nextClicked(1)}
+          >다음</button>
+        </Link>
       </>
       }
 

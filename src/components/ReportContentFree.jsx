@@ -24,7 +24,7 @@ const ReportContent = (props) => {
   const [simpleData, simpleSetData] = useState({
     complexType: "집합건물",
     isGuaranteeInsurance: true,
-    isRepaymentSubject: false
+    isRepaymentSubject: true
   })
 
   const kakaoChannelButtonClicked = () => {
@@ -67,18 +67,7 @@ const ReportContent = (props) => {
             </p>
           </>
         }
-        {simpleData.isGuaranteeInsurance &&
-          <>
-            <Building className={styles.detailIcon}/>
-            <div className={styles.detailSubTitleBox}>이 집은 '일반 건물'이에요!</div>
-            <p className={styles.detailText}>
-              이 집은 호수별로 각각의 집주인이 있는 아파트나 오피스텔 같은 집들과 달리 건물째로 집주인이 있는 ‘일반 건물' 이에요!<br/><br/>
-              이 경우 같은 건물에 살고있는 다른 세입자들의 보증금액의 합(선순위 보증금)이 얼마인지 공인중개사분께 여쭤봐야 해요!<br/><br/>
-              그리고 등기부등본상 적힌 빚과 선순위보증금의 합이 건물 예상 가격 대비 얼마나 많은지 확인해보시길 권고 드립니다.<br/><br/>
-            </p>
-          </>
-        }
-        {!simpleData.isGuaranteeInsurance &&
+        {simpleData.complexType === "집합건물" &&
           <>
             <Building className={styles.detailIcon}/>
             <div className={styles.detailSubTitleBox}>이 집은 '집합 건물'이에요!</div>
@@ -87,6 +76,17 @@ const ReportContent = (props) => {
               집합건물의 경우 계약 시 반드시 정확한 동 호수를 계약서에 기재해야 해요. <br/><br/>
               혹시 문패에 적힌 호수가 등기부등본, 건축물대장에 적힌 호수 이름과 다르지는 않은지 확인해 보세요!<br/><br/>
               다르다면 반드시 서류상 주소지로 기재해야 한다는 점 명심해 주세요!<br/><br/>
+            </p>
+          </>
+        }
+        {simpleData.complexType !== "집합건물" &&
+          <>
+            <Building className={styles.detailIcon}/>
+            <div className={styles.detailSubTitleBox}>이 집은 '일반 건물'이에요!</div>
+            <p className={styles.detailText}>
+              이 집은 호수별로 각각의 집주인이 있는 아파트나 오피스텔 같은 집들과 달리 건물째로 집주인이 있는 ‘일반 건물' 이에요!<br/><br/>
+              이 경우 같은 건물에 살고있는 다른 세입자들의 보증금액의 합(선순위 보증금)이 얼마인지 공인중개사분께 여쭤봐야 해요!<br/><br/>
+              그리고 등기부등본상 적힌 빚과 선순위보증금의 합이 건물 예상 가격 대비 얼마나 많은지 확인해보시길 권고 드립니다.<br/><br/>
             </p>
           </>
         }

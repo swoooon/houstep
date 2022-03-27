@@ -18,7 +18,7 @@ const ReportSumHighlightsFree = (props) => {
   const [simpleData, simpleSetData] = useState({
     complexType: "집합건물",
     isGuaranteeInsurance: true,
-    isRepaymentSubject: false
+    isRepaymentSubject: true
   })
 
   const million = 100000000
@@ -38,32 +38,32 @@ const ReportSumHighlightsFree = (props) => {
           {simpleData.isRepaymentSubject &&
             <>
               <Check className={styles.summaryBang}/>
-              <div className={styles.summaryDiv}>최우선 변제가 가능할 수도 있어요!</div>
-              <div className={styles.summarySpan}>최우선 변제의 가능성이 있는 집입니다.</div>
-              <div className={styles.summaryBlock}/>
+              <div className={styles.summaryDiv} style={{
+                height:'35px'
+              }}>최우선 변제가 가능할 수도 있어요!</div>
+              <div className={styles.summaryBlock}></div>
             </>
           }
           {!simpleData.isRepaymentSubject &&
             <>
               <Check className={styles.summaryBang}/>
-              <div className={styles.summaryDiv}>최우선 변제가 안되는 집이에요!</div>
-              <div className={styles.summarySpan}>최우선 변제의 조건을 만족하지 못하는 집입니다.</div>
+              <div className={styles.summaryDiv} style={{
+                height:'35px'
+              }}>최우선 변제가 안되는 집이에요!</div>
               <div className={styles.summaryBlock}/>
             </>
           }
-          {simpleData.complexType &&
-            <>
-              <Check className={styles.summaryBang}/>
-              <div className={styles.summaryDiv}>이 집은 '일반 건물'이에요!</div>
-              <div className={styles.summarySpan}></div>
-              <div className={styles.summaryBlock}/>
-            </>
-          }
-          {!simpleData.complexType &&
+          {simpleData.complexType === "집합건물" &&
             <>
               <Check className={styles.summaryBang}/>
               <div className={styles.summaryDiv}>이 집은 '집합 건물'이에요!</div>
-              <div className={styles.summarySpan}></div>
+              <div className={styles.summaryBlock}/>
+            </>
+          }
+          {simpleData.complexType !== "집합건물" &&
+            <>
+              <Check className={styles.summaryBang}/>
+              <div className={styles.summaryDiv}>이 집은 '일반 건물'이에요!</div>
               <div className={styles.summaryBlock}/>
             </>
           }

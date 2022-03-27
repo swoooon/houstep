@@ -16,9 +16,7 @@ const Main = () => {
   return (
     <Layout>
       <Icon className={styles.icon}/>
-      <Props className={styles.logo}/>
       <div className={styles.intro}> 안전한 계약을 위한 첫걸음 </div>
-      
       <button className={styles.buttonLogo} style={kakaoStyle} type='button'> 
       <Link to='/search'> <img src={KakaoLogin} alt='kakaoLogin'/> </Link> </button>
     </Layout>
