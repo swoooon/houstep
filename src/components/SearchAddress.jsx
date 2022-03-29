@@ -45,7 +45,7 @@ const SearchAddress = (props) => {
     searchData = []
     console.log('search function called')
 
-    await axios.get('http://ec2-3-36-50-185.ap-northeast-2.compute.amazonaws.com:8080/api/v1/address/search?keyword=' + keyword)
+    await axios.get('http://ec2-3-36-50-185.ap-northeast-2.compute.amazonaws.com/api/v1/address/search?keyword=' + keyword)
     .then((res) => {
       const result = res.data.data
       result.forEach(house => {
