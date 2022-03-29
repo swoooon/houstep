@@ -65,25 +65,186 @@ const ReportContent = (props) => {
         {!data.joint && // !공동담보
           <>
             { (data.mortgageDanger === '위험' && data.buildType === 'JT') &&
-              <div>세부리포트2</div>
+              <>
+                <div className={styles.detailTitle}>빚이 <span style={{color: '#FF5A56'}}>약 {data.mortgage/million}억</span> 있습니다.</div>
+                <Seesaw className={styles.detailIcon}/>
+                <div className={styles.detailSubTitleBox}>빚이 많은 편이에요!</div>
+                <p className={styles.detailText}> 
+                  이 집을 담보로 빚이 많은 편이라 주의가 필요해요! <br/><br/>
+                  현재 등기부등본상 빚이 약 {data.mortgage/million}억 정도 있는데 예상 최소 가격 대비 nn% 정도예요!  <br/><br/>
+                  등기부등본에 적혀있는 빚 외에도 선순위보증금(다른 세입자들 보증금의 합)을 공인중개사나 집주인에게 물어보신 후 계산해 보셔야 해요! <br/><br/>
+                </p>
+                <div className={styles.detailRiskCalculator}>
+                  <div style={{fontSize: '14px', fontWeight: 700}}>위험도 계산식</div>
+                  <span style={{background: 'linear-gradient(to top, #FFCDC9 30%, transparent 50%)', fontSize: '13px', fontWeight: 700}}>
+                    보증금 + 빚 〈 <span style={{textDecoration: 'underline'}}>예상거래가격</span> × 0.7
+                  </span>
+                </div>
+                <p className={styles.detailTextGray}>빚과 보증금의 합산액이 예상 거래가의 70% 이상이면 위험하다고 봐요!<br/><br/></p>
+                <p className={styles.detailText}>
+                  또한 이 집을 담보로 집주인이 대출을 얼마든지 더 받을 수 있기 때문에 수시로 등기부등본을 확인해 보시길 권고 드립니다.<br/><br/>
+                </p>
+                <p className={styles.detailTextGray}>계약 전, 잔금 입금 전, 전입신고 전 이렇게 세 번 확인해 주세요!<br/></p>
+                <div className={styles.detailSubTitleBox}>공동담보 해제 요청을 추천드려요!</div>
+                <p className={styles.detailText}>
+                  공동담보는 말씀드린것 처럼 많은 집을 묶어 빚을 받은 것이기 때문에 임대인의 허락이 있다면 고객님이 계약하고자 하는 호수를 공동담보 목록에서 제외 시키고 계약을 진행할 수 있기도 합니다.<br/><br/>
+                  따라서 공인중개사와 임대인에게 고객님이 계약하고자 하는 호수를 공동담보에서 해제해줄 수 있는지 여쭤보시고 계약하시길 바랍니다.<br/><br/>
+                </p>
+                <div className={styles.detailSubTitleBox}>토지등기부등본도 꼭 확인해주세요!</div>
+                <p className={styles.detailText}>
+                  이 집의 경우 ‘건물’ 말고 ‘땅’ 부분만 따로 담보 잡아 대출받는 것이 가능하기 때문에 토지등기부등본도 꼭 확인해 봐야 해요!<br/><br/>
+                  토지등기부등본을 발급받아 토지로는 빚이 얼마 있는지 확인해 보신 후 위험도 계산식에 넣어 비교해 보시길 권고 드립니다.<br/><br/>
+                </p>
+                <p className={styles.detailTextGray}>토지등기부등본을 확인하는 자세한 방법은 리포트 하단의 부동산 거래 꿀 Tip! 에 나와있으니 참고해 주세요!<br/><br/></p>
+              </>
             }
             { (data.mortgageDanger === '위험' && (data.buildType === 'AP' || data.buildType === 'OP' || data.buildType === 'DS')) &&
-              <div>세부리포트3</div>
+              <>
+                <div className={styles.detailTitle}>빚이 <span style={{color: '#FF5A56'}}>약 {data.mortgage/million}억</span> 있습니다.</div>
+                <Seesaw className={styles.detailIcon}/>
+                <div className={styles.detailSubTitleBox}>빚이 많은 편이에요!</div>
+                <p className={styles.detailText}> 
+                  이 집을 담보로 빚이 많은 편이라 주의가 필요해요! <br/><br/>
+                  현재 등기부등본상 빚이 약 {data.mortgage/million}억 정도 있는데 예상 최소 가격 대비 nn% 정도예요!  <br/><br/>
+                </p>
+                <div className={styles.detailRiskCalculator}>
+                  <div style={{fontSize: '14px', fontWeight: 700}}>위험도 계산식</div>
+                  <span style={{background: 'linear-gradient(to top, #FFCDC9 30%, transparent 50%)', fontSize: '13px', fontWeight: 700}}>
+                    보증금 + 빚 〈 <span style={{textDecoration: 'underline'}}>예상거래가격</span> × 0.7
+                  </span>
+                </div>
+                <p className={styles.detailTextGray}>빚과 보증금의 합산액이 예상 거래가의 70% 이상이면 위험하다고 봐요!<br/><br/></p>
+                <p className={styles.detailText}>
+                  또한 이 집을 담보로 집주인이 대출을 얼마든지 더 받을 수 있기 때문에 수시로 등기부등본을 확인해 보시길 권고 드립니다.<br/><br/>
+                </p>
+                <p className={styles.detailTextGray}>계약 전, 잔금 입금 전, 전입신고 전 이렇게 세 번 확인해 주세요!<br/></p>
+              </>
             }
             { (data.mortgageDanger === '주의1' && data.buildType === 'JT') &&
-              <div>세부리포트4</div>
+              <>
+                <div className={styles.detailTitle}>빚이 <span style={{color: '#FF5A56'}}>약 {data.mortgage/million}억</span> 있습니다.</div>
+                <Seesaw className={styles.detailIcon}/>
+                <div className={styles.detailSubTitleBox}>빚이 많은 편은 아니에요!</div>
+                <p className={styles.detailText}> 
+                  이 집을 담보로 빚이 많은 편은 아니지만 주의가 필요해요! <br/><br/>
+                  현재 등기부등본상 빚이 약 {data.mortgage/million}억 정도 있는데 예상 최소 가격 대비 nn% 정도예요!  <br/><br/>
+                  등기부등본에 적혀있는 빚 외에도 선순위보증금(다른 세입자들 보증금의 합)을 공인중개사나 집주인에게 물어보신 후 계산해 보셔야 해요! <br/><br/>
+                </p>
+                <div className={styles.detailRiskCalculator}>
+                  <div style={{fontSize: '14px', fontWeight: 700}}>위험도 계산식</div>
+                  <span style={{background: 'linear-gradient(to top, #FFCDC9 30%, transparent 50%)', fontSize: '13px', fontWeight: 700}}>
+                    보증금 + 빚 〈 <span style={{textDecoration: 'underline'}}>예상거래가격</span> × 0.7
+                  </span>
+                </div>
+                <p className={styles.detailTextGray}>빚과 보증금의 합산액이 예상 거래가의 70% 이상이면 위험하다고 봐요!<br/><br/></p>
+                <p className={styles.detailText}>
+                  또한 이 집을 담보로 집주인이 대출을 얼마든지 더 받을 수 있기 때문에 수시로 등기부등본을 확인해 보시길 권고 드립니다.<br/><br/>
+                </p>
+                <p className={styles.detailTextGray}>계약 전, 잔금 입금 전, 전입신고 전 이렇게 세 번 확인해 주세요!<br/></p>
+                <div className={styles.detailSubTitleBox}>토지등기부등본도 꼭 확인해주세요!</div>
+                <p className={styles.detailText}>
+                  이 집의 경우 ‘건물’ 말고 ‘땅’ 부분만 따로 담보 잡아 대출받는 것이 가능하기 때문에 토지등기부등본도 꼭 확인해 봐야 해요!<br/><br/>
+                  토지등기부등본을 발급받아 토지로는 빚이 얼마 있는지 확인해 보신 후 위험도 계산식에 넣어 비교해 보시길 권고 드립니다.<br/><br/>
+                </p>
+                <p className={styles.detailTextGray}>토지등기부등본을 확인하는 자세한 방법은 리포트 하단의 부동산 거래 꿀 Tip! 에 나와있으니 참고해 주세요!<br/><br/></p>
+              </>
             }
             { (data.mortgageDanger === '주의1' && (data.buildType === 'AP' || data.buildType === 'OP' || data.buildType === 'DS')) &&
-              <div>세부리포트5</div>
+              <>
+                <div className={styles.detailTitle}>빚이 <span style={{color: '#FF5A56'}}>약 {data.mortgage/million}억</span> 있습니다.</div>
+                <Seesaw className={styles.detailIcon}/>
+                <div className={styles.detailSubTitleBox}>빚이 많은 편은 아니에요!</div>
+                <p className={styles.detailText}> 
+                  이 집을 담보로 빚이 많은 편은 아니지만 주의가 필요해요! <br/><br/>
+                  현재 등기부등본상 빚이 약 {data.mortgage/million}억 정도 있는데 예상 최소 가격 대비 nn% 정도예요!  <br/><br/>
+                </p>
+                <div className={styles.detailRiskCalculator}>
+                  <div style={{fontSize: '14px', fontWeight: 700}}>위험도 계산식</div>
+                  <span style={{background: 'linear-gradient(to top, #FFCDC9 30%, transparent 50%)', fontSize: '13px', fontWeight: 700}}>
+                    보증금 + 빚 〈 <span style={{textDecoration: 'underline'}}>예상거래가격</span> × 0.7
+                  </span>
+                </div>
+                <p className={styles.detailTextGray}>빚과 보증금의 합산액이 예상 거래가의 70% 이상이면 위험하다고 봐요!<br/><br/></p>
+                <p className={styles.detailText}>
+                  또한 이 집을 담보로 집주인이 대출을 얼마든지 더 받을 수 있기 때문에 수시로 등기부등본을 확인해 보시길 권고 드립니다.<br/><br/>
+                </p>
+                <p className={styles.detailTextGray}>계약 전, 잔금 입금 전, 전입신고 전 이렇게 세 번 확인해 주세요!<br/></p>
+              </>
             }
             { (data.mortgageDanger === '주의2' && data.buildType === 'JT') &&
-              <div>세부리포트6</div>
+              <>
+                <div className={styles.detailTitle}>빚이 <span style={{color: '#FF5A56'}}>약 {data.mortgage/million}억</span> 있습니다.</div>
+                <Seesaw className={styles.detailIcon}/>
+                <div className={styles.detailSubTitleBox}>빚이 조금 있는 편이에요!</div>
+                <p className={styles.detailText}> 
+                  이 집을 담보로 빚이 조금 있는 편이라 주의가 필요해요! <br/><br/>
+                  현재 등기부등본상 빚이 약 {data.mortgage/million}억 정도 있는데 예상 최소 가격 대비 nn% 정도예요!  <br/><br/>
+                  등기부등본에 적혀있는 빚 외에도 선순위보증금(다른 세입자들 보증금의 합)을 공인중개사나 집주인에게 물어보신 후 계산해 보셔야 해요! <br/><br/>
+                </p>
+                <div className={styles.detailRiskCalculator}>
+                  <div style={{fontSize: '14px', fontWeight: 700}}>위험도 계산식</div>
+                  <span style={{background: 'linear-gradient(to top, #FFCDC9 30%, transparent 50%)', fontSize: '13px', fontWeight: 700}}>
+                    보증금 + 빚 〈 <span style={{textDecoration: 'underline'}}>예상거래가격</span> × 0.7
+                  </span>
+                </div>
+                <p className={styles.detailTextGray}>빚과 보증금의 합산액이 예상 거래가의 70% 이상이면 위험하다고 봐요!<br/><br/></p>
+                <p className={styles.detailText}>
+                  또한 이 집을 담보로 집주인이 대출을 얼마든지 더 받을 수 있기 때문에 수시로 등기부등본을 확인해 보시길 권고 드립니다.<br/><br/>
+                </p>
+                <p className={styles.detailTextGray}>계약 전, 잔금 입금 전, 전입신고 전 이렇게 세 번 확인해 주세요!<br/></p>
+                <div className={styles.detailSubTitleBox}>토지등기부등본도 꼭 확인해주세요!</div>
+                <p className={styles.detailText}>
+                  이 집의 경우 ‘건물’ 말고 ‘땅’ 부분만 따로 담보 잡아 대출받는 것이 가능하기 때문에 토지등기부등본도 꼭 확인해 봐야 해요!<br/><br/>
+                  토지등기부등본을 발급받아 토지로는 빚이 얼마 있는지 확인해 보신 후 위험도 계산식에 넣어 비교해 보시길 권고 드립니다.<br/><br/>
+                </p>
+                <p className={styles.detailTextGray}>토지등기부등본을 확인하는 자세한 방법은 리포트 하단의 부동산 거래 꿀 Tip! 에 나와있으니 참고해 주세요!<br/><br/></p>
+              </>
             }
             { (data.mortgageDanger === '주의2' && (data.buildType === 'AP' || data.buildType === 'OP' || data.buildType === 'DS')) &&
-              <div>세부리포트7</div>
+              <>
+                <div className={styles.detailTitle}>빚이 <span style={{color: '#FF5A56'}}>약 {data.mortgage/million}억</span> 있습니다.</div>
+                <Seesaw className={styles.detailIcon}/>
+                <div className={styles.detailSubTitleBox}>빚이 조금 있는 편이에요!</div>
+                <p className={styles.detailText}> 
+                  이 집을 담보로 빚이 조금 있는 편이라 주의가 필요해요! <br/><br/>
+                  현재 등기부등본상 빚이 약 {data.mortgage/million}억 정도 있는데 예상 최소 가격 대비 nn% 정도예요!  <br/><br/>
+                </p>
+                <div className={styles.detailRiskCalculator}>
+                  <div style={{fontSize: '14px', fontWeight: 700}}>위험도 계산식</div>
+                  <span style={{background: 'linear-gradient(to top, #FFCDC9 30%, transparent 50%)', fontSize: '13px', fontWeight: 700}}>
+                    보증금 + 빚 〈 <span style={{textDecoration: 'underline'}}>예상거래가격</span> × 0.7
+                  </span>
+                </div>
+                <p className={styles.detailTextGray}>빚과 보증금의 합산액이 예상 거래가의 70% 이상이면 위험하다고 봐요!<br/><br/></p>
+                <p className={styles.detailText}>
+                  또한 이 집을 담보로 집주인이 대출을 얼마든지 더 받을 수 있기 때문에 수시로 등기부등본을 확인해 보시길 권고 드립니다.<br/><br/>
+                </p>
+                <p className={styles.detailTextGray}>계약 전, 잔금 입금 전, 전입신고 전 이렇게 세 번 확인해 주세요!<br/></p>
+              </>
             }
             { (data.mortgageDanger === '안전' && data.buildType === 'JT') &&
-              <div>세부리포트8</div>
+              <>
+                <div className={styles.detailTitle}>집을 담보로 빚이 <span style={{color: '#FF5A56'}}> 0원</span>이에요!</div>
+                <Seesaw className={styles.detailIcon}/>
+                <div className={styles.detailSubTitleBox}>등기부등본상 빚이 없어요!</div>
+                <p className={styles.detailText}> 
+                  현재 등시부등본상 빚이 없는 집이에요! <br/><br/>
+                  당장은 빚이 없어 덜 위험해 보일 수 있지만 언제든지 집주인이 이 집을 담보로 대출을 받을 수 있기 때문에 주기적인 등기부등본 확인과 특약조치가 필요해요!<br/><br/>
+                </p>
+                <p className={styles.detailTextGray}>계약 전, 잔금 입금 전, 전입신고 전 이렇게 세 번 확인해 주세요!<br/><br/></p>
+                <p className={styles.detailText}> 외에도 선순위보증금(다른 세입자들 보증금의 합)을 공인중개사나 집주인에게 물어보신 후 계산해 보셔야 보다 정확한 위험도를 알 수 있어요.<br/><br/></p>
+                <div className={styles.detailRiskCalculator}>
+                  <div style={{fontSize: '14px', fontWeight: 700}}>위험도 계산식</div>
+                  <span style={{background: 'linear-gradient(to top, #FFCDC9 30%, transparent 50%)', fontSize: '13px', fontWeight: 700}}>
+                    보증금 + 빚 〈 <span style={{textDecoration: 'underline'}}>예상거래가격</span> × 0.7
+                  </span>
+                </div>
+                <p className={styles.detailTextGray}>빚과 보증금의 합산액이 예상 거래가의 70% 이상이면 위험하다고 봐요!<br/><br/></p>
+                <p className={styles.detailText}>
+                  또한 이 집을 담보로 집주인이 대출을 얼마든지 더 받을 수 있기 때문에 수시로 등기부등본을 확인해 보시길 권고 드립니다.<br/><br/>
+                </p>
+                <p className={styles.detailTextGray}>계약 전, 잔금 입금 전, 전입신고 전 이렇게 세 번 확인해 주세요!<br/></p>
+              </>
             }
             { (data.mortgageDanger === '안전' && (data.buildType === 'AP' || data.buildType === 'OP' || data.buildType === 'DS')) &&
               <div>세부리포트9</div>

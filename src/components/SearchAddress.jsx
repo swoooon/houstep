@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 // eslint-disable-next-line no-unused-vars
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
 import Modal from 'react-modal'
+import axios from 'axios'
 
 import styles from '../assets/Icon.module.scss'
 import { BsSearch } from 'react-icons/bs'
@@ -13,6 +14,9 @@ const SearchAddress = (props) => {
   const [ clickedBox, setClickedBox ] = useState()
   const [ clickedIndex, setClickedIndex ] = useState(-1)
   const [ indexBool, setIndexBool ] = useState(false)
+
+  const [ loading, setLoading ] = useState(false)
+  const [ data, setData ] = useState([])
 
   const overlayMargin = (window.innerHeight>812 ? ((window.innerHeight - 812) / 2) : '0px')
 
@@ -31,59 +35,26 @@ const SearchAddress = (props) => {
     // initialize state
     setClickedIndex(-1)
     setIndexBool(false)
+
+    setLoading(true)
   }
 
-  const testDB = [
-    { 
-      "complexType": "집합건물",
-      "detailAddress": "경기도 안양시 동안구 부림로 80 초원아파트 501동 제 1층 제 101호",
-      "landCode": "평촌동 897-5",
-      "uniqueNo": "1341-1996-127219"
-    },
-    { 
-      "complexType": "집합건물",
-      "detailAddress": "경기도 안양시 동안구 부림로 80 초원아파트 501동 제 1층 제 102호",
-      "landCode": "평촌동 897-5",
-      "uniqueNo": "1341-1996-127220"
-    },
-    { 
-      "complexType": "집합건물",
-      "detailAddress": "경기도 안양시 동안구 부림로 80 초원아파트 501동 제 1층 제 103호",
-      "landCode": "평촌동 897-5",
-      "uniqueNo": "1341-1996-127221"
-    },
-    { 
-      "complexType": "집합건물",
-      "detailAddress": "경기도 남양주시 금곡동 부영아파트",
-      "landCode": "금곡동 897-5",
-      "uniqueNo": "1341-1436-122419"
-    },
-    { 
-      "complexType": "집합건물",
-      "detailAddress": "서울특별시 마포구 와우산로 94 홍익대학교 C동 607호",
-      "landCode": "상수동 240-23",
-      "uniqueNo": "1234-1535-954319"
-    },
-    { 
-      "complexType": "집합건물",
-      "detailAddress": "서울특별시 마포구 와우산로 94 홍익대학교 C동 608호",
-      "landCode": "상수동 240-23",
-      "uniqueNo": "1234-1535-954320"
-    },
-  ]
-
-  let searchCount = 0
   let searchData = []
 
-  const testSearch = (keyword) => {
+  const search = async(keyword) => {
+    searchData = []
+    console.log('search function called')
 
-    testDB.map((house) => {
-      if (house['detailAddress'].indexOf(keyword) !== -1) {
+    await axios.get('http://ec2-3-36-50-185.ap-northeast-2.compute.amazonaws.com/api/v1/address/search?keyword=' + keyword)
+    .then((res) => {
+      const result = res.data.data
+      result.forEach(house => {
         searchData.push(house)
-        searchCount++
-      }
+      })
+      setLoading(false)
     })
-    //console.log(searchData)
+    return(searchData)
+
   }
 
   const checkClicked = (box, index) => {
@@ -91,6 +62,18 @@ const SearchAddress = (props) => {
     setClickedIndex(index)
     setIndexBool(true)
   }
+
+  useEffect(() => {
+    if (loading) {
+      async function fetchData() {
+        const result = await search(address)
+        setData(result)
+      }
+      fetchData()
+    } else {
+      console.log(loading)
+    }
+  }, [loading])
 
   return (
     <div>
@@ -136,15 +119,14 @@ const SearchAddress = (props) => {
           />
         </div>
 
-        {searchClicked && // if search button status is clicked, show search details
+        {searchClicked && (!loading) && // if search button status is clicked, show search details
           <>
-            {testSearch(address)}
-            {!(searchCount === 0) &&
+            {!(data.length === 0) &&
               <>
                 <ul className={styles.searchBox}>
                   <div>
                     {
-                      searchData.map((e, i) => 
+                      data.map((e, i) => 
                         <div className={(i === clickedIndex) ? styles.clicked : styles.searchBlock}
                           key={i} onClick={() => checkClicked(e, i)}
                         >
@@ -155,7 +137,7 @@ const SearchAddress = (props) => {
                   </div>
                 </ul>
                 {indexBool ? (  // if user select address,
-                  <Link to='/checkRental' state={{ address: searchData[clickedIndex] }}
+                  <Link to='/checkRentalFree' state={{ address: data[clickedIndex] }} //checkRental
                     style={{textDecoration:'none'}}>
                     <button type="button" className="btn btn-outline-secondary"
                       style={{
@@ -176,7 +158,7 @@ const SearchAddress = (props) => {
                 )}
               </>
             }
-            {(searchCount === 0) &&
+            {(data.length === 0) &&
               <>
                 <div className={styles.subTitleText} style={{marginTop: '1.3em', textAlign: 'center'}}>검색 결과가 없습니다.</div>
                 <div className={styles.box} style={{ marginTop: '50px', width: '95%', height: '350px', borderRadius: '7%' }}>
