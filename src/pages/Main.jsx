@@ -25,7 +25,7 @@ const Main = () => {
         </div>
         <div>
           <LoginButtonContainer>
-            <LoginBtn
+            {/* <LoginBtn
               id="naverIdLogin"
               provider={"Naver"}
               onClick={() => {
@@ -34,7 +34,7 @@ const Main = () => {
             >
               <NaverLogo src={NaverLogoImg} alt="naverLogin" />
               <div>네이버로 시작하기</div>
-            </LoginBtn>
+            </LoginBtn> */}
 
             <LoginBtn
               provider={"Kakao"}
