@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 // eslint-disable-next-line no-unused-vars
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 
 import axios from "axios";
 import styled from "@emotion/styled";
@@ -12,15 +11,11 @@ import NaverLogoImg from "../assets/logoNaver.svg";
 import KakaoLogoImg from "../assets/logoKakao.svg";
 
 const Main = () => {
-  const KAKAO_CLIENT_ID = String(process.env.REACT_APP_KAKAO_REST_API_KEY);
-  const REDIRECT_URI = "http://localhost:3000/main";
-  const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${KAKAO_CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=code`;
-  let KAKAO_CODE = new URL(window.location.href).searchParams.get("code");
+  const BACKEND_URL = String(process.env.REACT_APP_API_URL);
+  const REDIRECT_URI = String(process.env.REACT_APP_LOGIN_REDIRECT_URL);
+  const KAKAO_AUTH_URL = `${BACKEND_URL}/oauth2/authorization/kakao?redirect_uri=${REDIRECT_URI}`;
+  const NAVER_AUTH_URL = `${BACKEND_URL}/oauth2/authorization/naver?redirect_uri=${REDIRECT_URI}`;
 
-  const NAVER_CLIENT_ID = String(process.env.REACT_APP_NAVER_CLIENT_ID);
-  const NAVER_STATE = "samplestate123123";
-  const NAVER_AUTH_URL = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${NAVER_CLIENT_ID}&state=${NAVER_STATE}&redirect_uri=${REDIRECT_URI}`;
-  let NAVER_CODE = new URL(window.location.href).searchParams.get("code");
   return (
     <Layout>
       <Wrapper>
@@ -29,9 +24,8 @@ const Main = () => {
           <div className={styles.intro}> 안전한 계약을 위한 첫걸음 </div>
         </div>
         <div>
-          {/* {KAKAO_CODE && <div>{KAKAO_CODE}</div>} */}
           <LoginButtonContainer>
-            <LoginBtn
+            {/* <LoginBtn
               id="naverIdLogin"
               provider={"Naver"}
               onClick={() => {
@@ -40,7 +34,7 @@ const Main = () => {
             >
               <NaverLogo src={NaverLogoImg} alt="naverLogin" />
               <div>네이버로 시작하기</div>
-            </LoginBtn>
+            </LoginBtn> */}
 
             <LoginBtn
               provider={"Kakao"}
