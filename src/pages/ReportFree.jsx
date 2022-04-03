@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 // eslint-disable-next-line no-unused-vars
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch, Link, useParams } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
+import axios from "axios";
 
 import Layout from '../components/LayoutNoHeader'
 import ReportComponentFree from '../components/ReportComponentFree'
@@ -11,6 +12,8 @@ const ReportFree = () => {
   const [ reportLoaded, setReportLoaded ] = useState(true)
   const [ reportState, setReportState ] = useState('Free')  // Safe, Caution, Danger, Free
   const [ address, setAddress ] = useState()
+  const [ trans, setTrans ] = useState()
+  const [ simpledata, setSimpleData ] = useState()
   const [ data, setData ] = useState({
     joint: false,
     mortgageDanger: '안전',
@@ -26,12 +29,35 @@ const ReportFree = () => {
 
   useEffect(() => {
     setAddress(props.state.address)
+    setTrans(props.state.trans)
+    axios
+    .post(
+      `${String(
+        process.env.REACT_APP_API_URL
+      )}/api/v1/analyze/simple`, {
+        'complexType': props.state.address.complexType,
+        'detailAddress': props.state.address.detailAddress,
+        'landCode': props.state.address.landCode,
+        'uniqueNo': props.state.address.uniqueNo,
+        'transAmount': props.state.trans.transAmount,
+        'transType': props.state.trans.transType
+      }
+    )
+    .then((res) => {
+      setSimpleData(res.data)
+      console.log(res.data)
+    })
+    .catch((err) => {
+      console.log("err: ", err);
+      window.alert("정보를 불러오던 중 오류가 발생했습니다.");
+    });
   }, [props])
+
   
   return(
     <Layout>
       {reportLoaded &&
-        <ReportComponentFree state={reportState} address={address} data={data}/>
+        <ReportComponentFree state={reportState} address={address} data={data} simpledata={simpledata}/>
       }
       {!reportLoaded &&
         <ReportFailed/>

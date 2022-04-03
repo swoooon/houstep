@@ -10,10 +10,13 @@ import ReportSumHighlightsFree from './ReportSumHighlightsFree'
 const ReportSum = (props) => {
 
   const [ reportState, setReportState ] = useState()
+  const [ simpledata, setSimpleData ] = useState()
   const [ data, setData ] = useState()
+  
 
   useEffect(() => {
     setReportState(props.state)
+    setSimpleData(props.simpledata)
     setData(props.data)
   }, [props])
 
@@ -40,7 +43,7 @@ const ReportSum = (props) => {
       {reportState === 'Free' && 
         <>
           <ReportSumFree/>
-          <ReportSumHighlightsFree data={data}/>
+          <ReportSumHighlightsFree data={data} simpledata={simpledata}/>
         </>
       }
     </>
