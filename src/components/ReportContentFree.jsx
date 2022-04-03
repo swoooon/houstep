@@ -21,7 +21,7 @@ const ReportContent = (props) => {
     kapguDangerList: [],
   })
 
-  const [simpleData, simpleSetData] = useState({
+  const [simpledata, setSimpleData] = useState({
     complexType: "집합건물",
     isGuaranteeInsurance: true,
     isRepaymentSubject: true
@@ -38,6 +38,7 @@ const ReportContent = (props) => {
   const million = 100000000
 
   useEffect(() => {
+    setSimpleData(props.simpledata)
     setData(props.data)
   }, [props])
 
@@ -46,7 +47,7 @@ const ReportContent = (props) => {
       <div style={{height: '35px'}}></div>
       <div className={styles.detailBox}>
         <div className={styles.summaryTitle}>주요 핵심 리포트</div>
-        {simpleData.isRepaymentSubject &&
+        {simpledata.isRepaymentSubject &&
           <>
             <Coin className={styles.detailIcon}/>
             <div className={styles.detailSubTitleBox}>최우선 변제가 가능할 수도 있어요!</div>
@@ -57,7 +58,7 @@ const ReportContent = (props) => {
             </p>
           </>
         }
-        {!simpleData.isRepaymentSubject &&
+        {!simpledata.isRepaymentSubject &&
           <>
             <Coin className={styles.detailIcon}/>
             <div className={styles.detailSubTitleBox}>최우선 변제가 안되는 집이에요!</div>
@@ -67,7 +68,7 @@ const ReportContent = (props) => {
             </p>
           </>
         }
-        {simpleData.complexType === "집합건물" &&
+        {simpledata.complexType === "집합건물" &&
           <>
             <Building className={styles.detailIcon}/>
             <div className={styles.detailSubTitleBox}>이 집은 '집합 건물'이에요!</div>
@@ -79,7 +80,7 @@ const ReportContent = (props) => {
             </p>
           </>
         }
-        {simpleData.complexType !== "집합건물" &&
+        {simpledata.complexType !== "집합건물" &&
           <>
             <Building className={styles.detailIcon}/>
             <div className={styles.detailSubTitleBox}>이 집은 '일반 건물'이에요!</div>

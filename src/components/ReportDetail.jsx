@@ -13,11 +13,13 @@ import styles from '../assets/Icon.module.scss'
 const ReportDetail = (props) => {
   const [ reportState, setReportState ] = useState()
   const [ address, setAddress ] = useState()
+  const [ simpledata, setSimpleData ] = useState()
   const [ data, setData ] = useState()
 
   useEffect(() => {
     setReportState(props.state)
     setAddress(props.address)
+    setSimpleData(props.simpledata)
     setData(props.data)
   }, [props])
 
@@ -63,7 +65,7 @@ const ReportDetail = (props) => {
             <ReportAddress address={address}/>
           </div>
           <div className={styles.safeBackgroundFull}>
-            <ReportContentFree data={data}/>
+            <ReportContentFree data={data} simpledata={simpledata}/>
           </div>
         </>
       }

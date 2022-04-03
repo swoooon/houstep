@@ -13,6 +13,10 @@ const CheckRentalFree = props => {
   const [ questionNumber, setQuestionNumber ] = useState(0)
   const [ guarantee, setGuarantee ] = useState()
   const [ num, setNum ] = useState('')
+  const [ trans, setTrans ] = useState({
+    transAmount: "0",
+    transType: "전세"
+  })
 
   const [ address, setAddress ] = useState()
   
@@ -76,12 +80,24 @@ const CheckRentalFree = props => {
     switch (index) {
       case 1:
         console.log('전세 clicked')
+        setTrans({
+          ...trans,
+          transType: "전세"
+        })
         break
       case 2:
         console.log('월세 clicked')
+        setTrans({
+          ...trans,
+          transType: "월세"
+        })
         break
       case 3:
         console.log('매매 clicked')
+        setTrans({
+          ...trans,
+          transType: "매매"
+        })
         break
       default:
         console.log('default')
@@ -104,7 +120,12 @@ const CheckRentalFree = props => {
     }
     const uncomma = (str) => {
       str = String(str)
-      return str.replace(/[^\d]+/g, '')
+      const resstr = str.replace(/[^\d]+/g, '')
+      setTrans({
+        ...trans,
+        transAmount: (resstr === '') ? '0' : resstr
+      }) 
+      return resstr
     }
     return comma(uncomma(str))
   }
@@ -178,7 +199,7 @@ const CheckRentalFree = props => {
             onChange={(e) => setNum(inputPriceFormat(e.target.value))}
           />
           <Link to={'/reportFree'}
-              state={{ address: address }}
+              state={{ address: address, trans: trans}}
               style={{ textDecoration:'none', flex: '1' }}>
               <button type='button' className='btn btn-outline-secondary'
                 style={{

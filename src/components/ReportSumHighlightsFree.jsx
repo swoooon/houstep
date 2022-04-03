@@ -15,7 +15,7 @@ const ReportSumHighlightsFree = (props) => {
     kapguDangerList: [],
   })
   
-  const [simpleData, simpleSetData] = useState({
+  const [simpledata, setSimpleData] = useState({
     complexType: "집합건물",
     isGuaranteeInsurance: true,
     isRepaymentSubject: true
@@ -25,17 +25,15 @@ const ReportSumHighlightsFree = (props) => {
 
   useEffect(() => {
     setData(props.data)
+    setSimpleData(props.simpledata)
   }, [props])
-
-  
-
 
   return (
     <div className={styles.summaryBox}>
       <div className={styles.summaryTitle} style={{marginBottom: '15px'}}>주요사항 요약</div>
-      {data &&
+      {simpledata &&
         <div>
-          {simpleData.isRepaymentSubject &&
+          {simpledata.isRepaymentSubject &&
             <>
               <Check className={styles.summaryBang}/>
               <div className={styles.summaryDiv} style={{
@@ -44,7 +42,7 @@ const ReportSumHighlightsFree = (props) => {
               <div className={styles.summaryBlock}></div>
             </>
           }
-          {!simpleData.isRepaymentSubject &&
+          {!simpledata.isRepaymentSubject &&
             <>
               <Check className={styles.summaryBang}/>
               <div className={styles.summaryDiv} style={{
@@ -53,14 +51,14 @@ const ReportSumHighlightsFree = (props) => {
               <div className={styles.summaryBlock}/>
             </>
           }
-          {simpleData.complexType === "집합건물" &&
+          {simpledata.complexType === "집합건물" &&
             <>
               <Check className={styles.summaryBang}/>
               <div className={styles.summaryDiv}>이 집은 '집합 건물'이에요!</div>
               <div className={styles.summaryBlock}/>
             </>
           }
-          {simpleData.complexType !== "집합건물" &&
+          {simpledata.complexType !== "집합건물" &&
             <>
               <Check className={styles.summaryBang}/>
               <div className={styles.summaryDiv}>이 집은 '일반 건물'이에요!</div>
@@ -69,7 +67,7 @@ const ReportSumHighlightsFree = (props) => {
           }
         </div>
       }
-      {!data &&
+      {!simpledata &&
         <>
           <div> loading... </div>
         </>
