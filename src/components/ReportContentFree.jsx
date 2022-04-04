@@ -47,48 +47,57 @@ const ReportContent = (props) => {
       <div style={{height: '35px'}}></div>
       <div className={styles.detailBox}>
         <div className={styles.summaryTitle}>주요 핵심 리포트</div>
-        {simpledata.isRepaymentSubject &&
+        {simpledata &&
           <>
-            <Coin className={styles.detailIcon}/>
-            <div className={styles.detailSubTitleBox}>최우선 변제가 가능할 수도 있어요!</div>
-            <p className={styles.detailText}>
-              이 집으로 2021년 5월 11일 이전에 잡힌 빚만 없다면 최우선 변제가 가능할 것 같아 보여요!<br/><br/>
-              하지만 이 집을 담보로 받은 빚의 설정 일자에 따라 변제 여부와 변제 금액이 달라질 수 있어요!<br/><br/>
-              또한 등기부등본에 임차권 설정, 경매개시결정 등과 같은 위험한 권리문제가 있으면 최우선 변제가 불가능하다는 점 확인해 주세요!<br/><br/>
-            </p>
+            {simpledata.isRepaymentSubject &&
+              <>
+                <Coin className={styles.detailIcon}/>
+                <div className={styles.detailSubTitleBox}>최우선 변제가 가능할 수도 있어요!</div>
+                <p className={styles.detailText}>
+                  이 집으로 2021년 5월 11일 이전에 잡힌 빚만 없다면 최우선 변제가 가능할 것 같아 보여요!<br/><br/>
+                  하지만 이 집을 담보로 받은 빚의 설정 일자에 따라 변제 여부와 변제 금액이 달라질 수 있어요!<br/><br/>
+                  또한 등기부등본에 임차권 설정, 경매개시결정 등과 같은 위험한 권리문제가 있으면 최우선 변제가 불가능하다는 점 확인해 주세요!<br/><br/>
+                </p>
+              </>
+            }
+            {!simpledata.isRepaymentSubject &&
+              <>
+                <Coin className={styles.detailIcon}/>
+                <div className={styles.detailSubTitleBox}>최우선 변제가 안되는 집이에요!</div>
+                <p className={styles.detailText}>
+                  이 집은 보증금이 높아 최우선 변제가 안되는 집이에요! 하지만 최우선 변제가 안된다고 무조건 보증금을 못 돌려 받는건 아니니 너무 걱정할 필요는 없어요.<br/><br/>
+                  다만, 매매 시세 대비 보증금이 너무 높거나 등기부등본에 적힌 빚이 많다면 위험할 수 있으니 주의하시길 바랍니다!<br/><br/>
+                </p>
+              </>
+            }
+            {simpledata.complexType === "집합건물" &&
+              <>
+                <Building className={styles.detailIcon}/>
+                <div className={styles.detailSubTitleBox}>이 집은 '집합 건물'이에요!</div>
+                <p className={styles.detailText}>
+                  이 집은 각 호수마다 각각의 집주인이 있는 ‘집합건물’이에요!<br/><br/>
+                  집합건물의 경우 계약 시 반드시 정확한 동 호수를 계약서에 기재해야 해요. <br/><br/>
+                  혹시 문패에 적힌 호수가 등기부등본, 건축물대장에 적힌 호수 이름과 다르지는 않은지 확인해 보세요!<br/><br/>
+                  다르다면 반드시 서류상 주소지로 기재해야 한다는 점 명심해 주세요!<br/><br/>
+                </p>
+              </>
+            }
+            {simpledata.complexType !== "집합건물" &&
+              <>
+                <Building className={styles.detailIcon}/>
+                <div className={styles.detailSubTitleBox}>이 집은 '일반 건물'이에요!</div>
+                <p className={styles.detailText}>
+                  이 집은 호수별로 각각의 집주인이 있는 아파트나 오피스텔 같은 집들과 달리 건물째로 집주인이 있는 ‘일반 건물' 이에요!<br/><br/>
+                  이 경우 같은 건물에 살고있는 다른 세입자들의 보증금액의 합(선순위 보증금)이 얼마인지 공인중개사분께 여쭤봐야 해요!<br/><br/>
+                  그리고 등기부등본상 적힌 빚과 선순위보증금의 합이 건물 예상 가격 대비 얼마나 많은지 확인해보시길 권고 드립니다.<br/><br/>
+                </p>
+              </>
+            }
           </>
         }
-        {!simpledata.isRepaymentSubject &&
+        {!simpledata &&
           <>
-            <Coin className={styles.detailIcon}/>
-            <div className={styles.detailSubTitleBox}>최우선 변제가 안되는 집이에요!</div>
-            <p className={styles.detailText}>
-              이 집은 보증금이 높아 최우선 변제가 안되는 집이에요! 하지만 최우선 변제가 안된다고 무조건 보증금을 못 돌려 받는건 아니니 너무 걱정할 필요는 없어요.<br/><br/>
-              다만, 매매 시세 대비 보증금이 너무 높거나 등기부등본에 적힌 빚이 많다면 위험할 수 있으니 주의하시길 바랍니다!<br/><br/>
-            </p>
-          </>
-        }
-        {simpledata.complexType === "집합건물" &&
-          <>
-            <Building className={styles.detailIcon}/>
-            <div className={styles.detailSubTitleBox}>이 집은 '집합 건물'이에요!</div>
-            <p className={styles.detailText}>
-              이 집은 각 호수마다 각각의 집주인이 있는 ‘집합건물’이에요!<br/><br/>
-              집합건물의 경우 계약 시 반드시 정확한 동 호수를 계약서에 기재해야 해요. <br/><br/>
-              혹시 문패에 적힌 호수가 등기부등본, 건축물대장에 적힌 호수 이름과 다르지는 않은지 확인해 보세요!<br/><br/>
-              다르다면 반드시 서류상 주소지로 기재해야 한다는 점 명심해 주세요!<br/><br/>
-            </p>
-          </>
-        }
-        {simpledata.complexType !== "집합건물" &&
-          <>
-            <Building className={styles.detailIcon}/>
-            <div className={styles.detailSubTitleBox}>이 집은 '일반 건물'이에요!</div>
-            <p className={styles.detailText}>
-              이 집은 호수별로 각각의 집주인이 있는 아파트나 오피스텔 같은 집들과 달리 건물째로 집주인이 있는 ‘일반 건물' 이에요!<br/><br/>
-              이 경우 같은 건물에 살고있는 다른 세입자들의 보증금액의 합(선순위 보증금)이 얼마인지 공인중개사분께 여쭤봐야 해요!<br/><br/>
-              그리고 등기부등본상 적힌 빚과 선순위보증금의 합이 건물 예상 가격 대비 얼마나 많은지 확인해보시길 권고 드립니다.<br/><br/>
-            </p>
+            loading...
           </>
         }
         {/* default contents */}
