@@ -11,7 +11,6 @@ const introStyle = {
 }
 
 const Search = () => {
-
   return (
     <Layout>
       <Icon className={styles.icon}/>
