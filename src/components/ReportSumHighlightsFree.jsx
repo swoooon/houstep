@@ -32,7 +32,7 @@ const ReportSumHighlightsFree = (props) => {
     <div className={styles.summaryBox}>
       <div className={styles.summaryTitle} style={{marginBottom: '15px'}}>주요사항 요약</div>
       {simpledata &&
-        <div>
+        <>
           {simpledata.isRepaymentSubject &&
             <>
               <Check className={styles.summaryBang}/>
@@ -65,7 +65,7 @@ const ReportSumHighlightsFree = (props) => {
               <div className={styles.summaryBlock}/>
             </>
           }
-        </div>
+        </>
       }
       {!simpledata &&
         <>

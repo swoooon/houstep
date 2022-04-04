@@ -30,27 +30,30 @@ const ReportFree = () => {
   useEffect(() => {
     setAddress(props.state.address)
     setTrans(props.state.trans)
-    axios
-    .post(
-      `${String(
-        process.env.REACT_APP_API_URL
-      )}/api/v1/analyze/simple`, {
-        'complexType': props.state.address.complexType,
-        'detailAddress': props.state.address.detailAddress,
-        'landCode': props.state.address.landCode,
-        'uniqueNo': props.state.address.uniqueNo,
-        'transAmount': props.state.trans.transAmount,
-        'transType': props.state.trans.transType
-      }
-    )
-    .then((res) => {
-      setSimpleData(res.data)
-      console.log(res.data)
-    })
-    .catch((err) => {
-      console.log("err: ", err);
-      window.alert("정보를 불러오던 중 오류가 발생했습니다.");
-    });
+    const getSimple = async () => {
+      await axios
+      .post(
+        `${String(
+          process.env.REACT_APP_API_URL
+        )}/api/v1/analyze/simple`, {
+          'complexType': props.state.address.complexType,
+          'detailAddress': props.state.address.detailAddress,
+          'landCode': props.state.address.landCode,
+          'uniqueNo': props.state.address.uniqueNo,
+          'transAmount': props.state.trans.transAmount,
+          'transType': props.state.trans.transType
+        }
+      )
+      .then((res) => {
+        setSimpleData(res.data)
+        console.log(res.data)
+      })
+      .catch((err) => {
+        console.log("err: ", err);
+        window.alert("정보를 불러오던 중 오류가 발생했습니다.");
+      });
+    }
+    getSimple()
   }, [props])
 
   
