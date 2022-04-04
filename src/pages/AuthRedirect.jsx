@@ -17,13 +17,14 @@ const AuthRedirect = () => {
       path: "/",
       expires,
     });
+
     axios
       .post(
         `${String(process.env.REACT_APP_API_URL)}/api/v1/auth/getRefreshToken`,
         { key: "value" },
         {
           headers: {
-            Authorization: `Bearer ${token}`,
+            'Authorization': `Bearer ${token}`,
           },
         }
       )
