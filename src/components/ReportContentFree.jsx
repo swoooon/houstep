@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-
 import styles from '../assets/Icon.module.scss'
 import { ReactComponent as Seesaw } from '../assets/reportSeesaw.svg'
 import { ReactComponent as Check } from '../assets/reportCheck.svg'
@@ -8,7 +7,6 @@ import { ReactComponent as Money } from '../assets/reportMoneyYellow.svg'
 import { ReactComponent as Building } from '../assets/reportBuliding.svg'
 import { ReactComponent as Hand } from '../assets/reportHand.svg'
 import { ReactComponent as Mini } from '../assets/reportMini.svg'
-
 const ReportContent = (props) => {
   const [data, setData] = useState({
     joint: false,
@@ -20,7 +18,6 @@ const ReportContent = (props) => {
     eulguDangerList: [],
     kapguDangerList: [],
   })
-
   const [simpledata, setSimpleData] = useState({
     complexType: "집합건물",
     isGuaranteeInsurance: true,
@@ -28,7 +25,7 @@ const ReportContent = (props) => {
   })
 
   const kakaoChannelButtonClicked = () => {
-    window.open('http://pf.kakao.com/_Bxnnxos', '_blank')
+    window.open('http://pf.kakao.com/_Bxnnxos/chat', '_blank')
   }
 
   const requestButtonClicked = () => {
@@ -114,10 +111,10 @@ const ReportContent = (props) => {
           따라서 계약 전 등기부등본과 건축물대장을 꼼꼼히 살펴보신 후 신중히 결정하시길 권고 드립니다!<br/><br/>
           혹시 등기부등본, 건축물대장 서류를 보는게 어려우시다면 하단의 부동산 전문가 서비스를 통해 빠르게 분석 받아 보세요!<br/>
         </p>
-      </div>  
+      </div>
       <div className={styles.detailBox}>
         <div className={styles.detailTitle}>우리 집 등기부등본 발급 받고<br/>부동산 전문가의 분석 받기</div>
-        <div className={styles.summaryMents} style={{marginTop: '20px'}}>등기부등본 발급 대행비 3,000원으로 받아보는<br/> 부동산 권리분석사의 우리집 맞춤형 위험도 리포트</div>
+        <div className={styles.summaryMents} style={{marginTop: '20px'}}>등기부등본과 건축물대장을 바탕으로<br/>약 52가지 위험사항을 점검해요!</div>
         <Mini className={styles.detailIcon}/>
         <Hand className={styles.detailIcon}/>
         <button type='button' className='btn btn-outline-tertiary'
