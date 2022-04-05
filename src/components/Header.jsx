@@ -21,7 +21,7 @@ const Header = () => {
          onClick={() => window.location.replace('/search')}> 
           <Link to='/search'> <img src={Logo} alt='propsLogo'/> </Link> 
         </button>
-        <MenuIcon onClick={() => setModalIsOpen(true)}/>
+        {/* <MenuIcon onClick={() => setModalIsOpen(true)}/> */}
         <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}
           style= {{
             overlay: {
