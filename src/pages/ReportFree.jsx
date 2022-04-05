@@ -7,6 +7,7 @@ import axios from "axios";
 import Layout from '../components/LayoutNoHeader'
 import ReportComponentFree from '../components/ReportComponentFree'
 import ReportFailed from '../components/ReportFailed'
+import { getCookie } from '../util/Cookie';
 
 const ReportFree = () => {
   const [ reportLoaded, setReportLoaded ] = useState(true)
@@ -42,6 +43,10 @@ const ReportFree = () => {
           'uniqueNo': props.state.address.uniqueNo,
           'transAmount': props.state.trans.transAmount,
           'transType': props.state.trans.transType
+        }, {
+          headers: {
+            'Authorization' : `Bearer ${getCookie('access_token')}`
+          }
         }
       )
       .then((res) => {

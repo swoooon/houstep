@@ -6,6 +6,7 @@ import axios from "axios";
 
 import styles from "../assets/Icon.module.scss";
 import { BsSearch } from "react-icons/bs";
+import { getCookie } from "../util/Cookie";
 
 const SearchAddress = (props) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -44,13 +45,16 @@ const SearchAddress = (props) => {
 
   const search = async (keyword) => {
     searchData = [];
-    console.log("search function called");
-
+    
     await axios
       .get(
         `${String(
           process.env.REACT_APP_API_URL
-        )}/api/v1/address/search?keyword=` + keyword
+        )}/api/v1/address/search?keyword=` + keyword, {
+          headers: {
+            'Authorization' : `Bearer ${getCookie('access_token')}`
+          }
+        }
       )
       .then((res) => {
         const result = res.data.data;

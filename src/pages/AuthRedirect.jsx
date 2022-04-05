@@ -12,7 +12,7 @@ const AuthRedirect = () => {
     const expires = new Date();
     const token = new URL(window.location.href).searchParams.get("token");
     expires.setHours(expires.getHours() + 5); // 5시간 후 만료
-    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    
     setCookie("access_token", token, {
       path: "/",
       expires,
