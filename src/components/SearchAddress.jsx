@@ -186,7 +186,7 @@ const SearchAddress = (props) => {
                         className="btn btn-outline-secondary"
                         style={{
                           margin: "auto",
-                          marginTop: "30%",
+                          marginTop: "2em",
                           display: "block",
                           width: "110px",
                           fontWeight: "600",
