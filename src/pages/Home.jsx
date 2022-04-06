@@ -12,7 +12,9 @@ const Home = () => {
         <MainCopy>
           <div>이 집, 계약할 때</div>
           <div>
-            <MainCopyStrong style={{ textEmphasis: "filled #ff5a56" }}>
+            <MainCopyStrong style={{ 
+              textEmphasis: "filled #ff5a56"
+              }}>
               이 부분
             </MainCopyStrong>
             <MainCopyStrong> 주의해야 해요!</MainCopyStrong>
