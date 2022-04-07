@@ -6,7 +6,7 @@ import styled from "@emotion/styled";
 import Layout from "../components/Layout";
 
 import styles from "../assets/Icon.module.scss";
-import { ReactComponent as Logo } from "../assets/logoWithCheck.svg";
+import { ReactComponent as Icon } from "../assets/icon.svg";
 import NaverLogoImg from "../assets/logoNaver.svg";
 import KakaoLogoImg from "../assets/logoKakao.svg";
 
@@ -20,7 +20,7 @@ const Main = () => {
     <Layout>
       <Wrapper>
         <div>
-          <Logo className={styles.icon} />
+          <Icon className={styles.icon} />
           <div className={styles.intro}> 안전한 계약을 위한 첫걸음 </div>
         </div>
         <div>
