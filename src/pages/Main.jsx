@@ -38,6 +38,10 @@ const Main = () => {
 
             <LoginBtn
               provider={"Kakao"}
+              style={{
+                textDecorationColor: 'none',
+                color: 'black'
+              }}
               onClick={() => {
                 window.location.href = KAKAO_AUTH_URL;
               }}
