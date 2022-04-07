@@ -80,6 +80,12 @@ const SearchAddress = (props) => {
     setIndexBool(true);
   };
 
+  const enterClick = (e) => {
+    if (e.key === 'Enter') {
+      checkAddress(document.getElementById('searchAddress').value)
+    }
+  }
+
   useEffect(() => {
     if (loading) {
       async function fetchData() {
@@ -136,6 +142,7 @@ const SearchAddress = (props) => {
             }}
             type="text"
             placeholder="주소를 입력해 주세요"
+            onKeyDown={enterClick}
           />
           <BsSearch
             style={{
