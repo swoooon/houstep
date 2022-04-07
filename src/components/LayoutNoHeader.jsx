@@ -1,6 +1,6 @@
 import styles from "../assets/Layout.module.scss"
 
-document.body.style.backgroundColor = "grey";
+document.body.style.backgroundColor = "#EEF1F6";
 
 const Layout = (props) => {
   const tempDiv = ((window.innerHeight - 812) / 2 + 'px').toString()
