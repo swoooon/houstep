@@ -2,30 +2,17 @@ import React from "react";
 import styled from "@emotion/styled";
 import { Link, unstable_HistoryRouter } from "react-router-dom";
 import Layout from "../components/Layout";
-
+import { ReactComponent as MainTitle } from "../assets/mainTitle.svg";
 import { ReactComponent as MainImg } from "../assets/reportSumSafe.svg";
 
 const Home = () => {
   return (
     <Layout>
       <Wrapper>
-        <MainCopy>
-          <div>이 집, 계약할 때</div>
-          <div>
-            <MainCopyStrong style={{ 
-              textEmphasis: "filled #ff5a56"
-              }}>
-              이 부분
-            </MainCopyStrong>
-            <MainCopyStrong> 주의해야 해요!</MainCopyStrong>
-          </div>
-        </MainCopy>
-
-        <MainIntro>
-          프롭스에서 무료로 받아보는
-          <br />
-          우리 집 맞춤형 분석 리포트
-        </MainIntro>
+        <MainTitle style={{
+          marginTop: '10%',
+          marginBottom: '15%'
+        }}/>
         <MainImg />
         <PopUpWrapper>
           <FreeBetaWrapper>
