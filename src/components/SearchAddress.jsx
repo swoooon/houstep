@@ -86,6 +86,8 @@ const SearchAddress = (props) => {
     }
   }
 
+  const disableScroll = () => { document.body.style.overflow = 'hidden' }
+
   useEffect(() => {
     if (loading) {
       async function fetchData() {
@@ -129,6 +131,7 @@ const SearchAddress = (props) => {
             borderRadius: "40px 40px 0px 0px",
           },
         }}
+        onAfterOpen={disableScroll}
       >
         <div className={styles.searchDiv}>
           {/** search bar in modal content */}
