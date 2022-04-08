@@ -65,7 +65,7 @@ const SearchAddress = (props) => {
       })
       .catch((err) => {
         console.log("err: ", err);
-        window.alert("인터넷등기소가 점검 중입니다.");
+        window.alert("주소를 다시 한 번 확인해주세요.");
         setSearchClicked(false);
         setClickedIndex(-1);
         setIndexBool(false);
