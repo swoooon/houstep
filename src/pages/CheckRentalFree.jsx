@@ -13,9 +13,11 @@ const CheckRentalFree = props => {
   const [ questionNumber, setQuestionNumber ] = useState(0)
   const [ guarantee, setGuarantee ] = useState()
   const [ num, setNum ] = useState('')
+  const [ duration, setDuration ] = useState('')
   const [ trans, setTrans ] = useState({
     transAmount: "0",
-    transType: "전세"
+    transType: "전세",
+    transDuration: "0",
   })
 
   const [ address, setAddress ] = useState()
@@ -33,6 +35,10 @@ const CheckRentalFree = props => {
   const question = [
     {
       '0': '거래 형태가',
+      '1': '어떻게 되시나요?'
+    },
+    {
+      '0': '계약 기간은',
       '1': '어떻게 되시나요?'
     },
     {
@@ -113,19 +119,17 @@ const CheckRentalFree = props => {
     }
   }
 
+  const uncomma = (str) => {
+    str = String(str);
+    const resstr = str.replace(/[^\d]+/g, '');
+    if (resstr == '') resstr = '0';
+    return resstr;
+  }
+
   const inputPriceFormat = (str) => {
     const comma = (str) => {
       str = String(str)
       return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,')
-    }
-    const uncomma = (str) => {
-      str = String(str)
-      const resstr = str.replace(/[^\d]+/g, '')
-      setTrans({
-        ...trans,
-        transAmount: (resstr === '') ? '0' : resstr
-      }) 
-      return resstr
     }
     return comma(uncomma(str))
   }
@@ -189,14 +193,71 @@ const CheckRentalFree = props => {
       </>
       }
 
-      {(questionNumber === 1 && !(clickedIndex === 3)) && // 전세 or 월세 클릭 후 다음 버튼을 눌렀을 때, 2번째 질문 페이지
+      {(questionNumber === 1 && !(clickedIndex === 3)) &&  // 계약 기간 + 이전, 다음 2번째 질문 페이지
+      <>
+        <input className={styles.inputDuration}
+          id='durationInput'
+          type='text' 
+          value={duration}
+          placeholder='계약기간을 입력해주세요 (개월)' 
+          onChange={(e) => {
+            setDuration(inputPriceFormat(e.target.value))
+            setTrans({
+            ...trans,
+            transDuration: e.target.value
+            })
+          }}
+        />
+
+        <Link to='/checkRentalFree' style={{ textDecoration:'none'}}>
+        <button type='button' className='btn btn-outline-secondary'
+            style={{
+              margin: 'auto',
+              marginLeft: '7.5%',
+              marginTop: '3em',
+              float: 'left',
+              display: 'block',
+              width: '35%',
+              fontWeight: '600',
+              border: '1px solid lightgray',
+              borderRadius: '20px'
+            }}
+            onClick={() => nextClicked(0)}
+          >이전</button>
+        </Link>
+        <Link to='/checkRentalFree' style={{ textDecoration:'none'}}>
+          <button type='button' className='btn btn-outline-secondary'
+            style={{
+              margin: 'auto',
+              marginRight: '7.5%',
+              marginTop: '3em',
+              float: 'right',
+              display: 'block',
+              width: '35%',
+              fontWeight: '600',
+              border: '1px solid lightgray',
+              borderRadius: '20px'
+            }}
+            onClick={() => nextClicked(2)}
+          >다음</button>
+        </Link>
+      </>
+      } 
+
+      {questionNumber === 2 && // 전세 or 월세 클릭 후 다음 버튼을 눌렀을 때, 2번째 질문 페이지
         <>
           <input className={styles.inputGuarantee}
             id='guaranteeInput'
             type='text' 
             placeholder='보증금액을 입력해주세요 (숫자)' 
             value={num}
-            onChange={(e) => setNum(inputPriceFormat(e.target.value))}
+            onChange={(e) => {
+              setNum(inputPriceFormat(e.target.value))
+              setTrans({
+                ...trans,
+                transAmount: uncomma(e.target.value)
+              }) 
+            }}
           />
           <Link to={'/reportFree'}
               state={{ address: address, trans: trans}}

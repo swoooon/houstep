@@ -177,6 +177,24 @@
   box-shadow: 0px 0px 10px lightgray;
 }
 
+.inputDuration {
+  position: relative;
+  width: 85%;
+  height: 2.8em;
+  margin-top: 100px;
+  padding-left: 15px;
+  padding-right: 50px;
+  background-color: transparent;
+  color: black;
+  font-size: 0.9em;
+  font-weight: 500;
+  text-align: left;
+  border-radius: 20px;
+  border: 0;
+  box-shadow: 0px 0px 10px lightgray;
+}
+
+
 .tips {
   font-size: 10px;
   -webkit-transform: scale(0.95);
