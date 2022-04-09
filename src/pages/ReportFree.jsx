@@ -31,6 +31,7 @@ const ReportFree = () => {
   useEffect(() => {
     setAddress(props.state.address)
     setTrans(props.state.trans)
+    console.log(props.state);
     const getSimple = async () => {
       await axios
       .post(

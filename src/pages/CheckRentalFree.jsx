@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
 import Modal from 'react-modal'
-
+import Checkbox from '../components/CheckBox'
 import Layout from '../components/Layout'
 import styles from '../assets/Icon.module.scss'
 import { ReactComponent as ServicePreparing } from '../assets/servicePreparing.svg'
@@ -13,11 +13,11 @@ const CheckRentalFree = props => {
   const [ questionNumber, setQuestionNumber ] = useState(0)
   const [ guarantee, setGuarantee ] = useState()
   const [ num, setNum ] = useState('')
-  const [ duration, setDuration ] = useState('')
+  const [ Period, setPeriod ] = useState('')
   const [ trans, setTrans ] = useState({
     transAmount: "0",
     transType: "전세",
-    transDuration: "0",
+    transPeriod: "0",
   })
 
   const [ address, setAddress ] = useState()
@@ -122,7 +122,6 @@ const CheckRentalFree = props => {
   const uncomma = (str) => {
     str = String(str);
     const resstr = str.replace(/[^\d]+/g, '');
-    if (resstr == '') resstr = '0';
     return resstr;
   }
 
@@ -195,20 +194,20 @@ const CheckRentalFree = props => {
 
       {(questionNumber === 1 && !(clickedIndex === 3)) &&  // 계약 기간 + 이전, 다음 2번째 질문 페이지
       <>
-        <input className={styles.inputDuration}
-          id='durationInput'
+        <input className={styles.inputPeriod}
+          id='PeriodInput'
           type='text' 
-          value={duration}
+          value={Period}
           placeholder='계약기간을 입력해주세요 (개월)' 
           onChange={(e) => {
-            setDuration(inputPriceFormat(e.target.value))
+            setPeriod(inputPriceFormat(e.target.value))
             setTrans({
             ...trans,
-            transDuration: e.target.value
+            transPeriod: e.target.value
             })
           }}
         />
-
+        <Checkbox text='잘 모르겠어요!'/>
         <Link to='/checkRentalFree' style={{ textDecoration:'none'}}>
         <button type='button' className='btn btn-outline-secondary'
             style={{
