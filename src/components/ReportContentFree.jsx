@@ -134,7 +134,7 @@ const ReportContent = (props) => {
           borderColor: 'transparent'
         }}
         onClick={() => kakaoChannelButtonClicked()}
-        >카톡으로 리포트 파일 받기</button>
+        >결제하기</button>
       </div>
       <div className={styles.summaryMents}>저희 서비스는 법률 자문을 포함하지 않습니다.<br/><br/>
         권리의 득실·변경이나 충돌 여부, 우열관계 등의 분석을 제공하고 있지 않기 때문에 복잡한 권리 관계가 얽힌 경우 ‘일반 법률사무’를 제공하는 전문가(변호사)에게 조언을 구해야 합니다.<br/><br/>

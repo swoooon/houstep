@@ -7,6 +7,7 @@ import ReportSum from './ReportSum'
 import ReportDetail from './ReportDetail'
 import Previous from '../assets/previous.svg'
 import NextWarn from '../assets/nextWarn.svg'
+import Layout from './Layout'
 
 const Report = (props) => {
   const [ reportState, setReportState ] = useState()
@@ -28,7 +29,7 @@ const Report = (props) => {
   }
 
   return (
-    <>
+    <Layout>
       <Link to='/search'>
         <div style={{ display: 'flex' }}>
           <img src={Previous} alt='Previous button'
@@ -64,8 +65,8 @@ const Report = (props) => {
           </div>
         </>
       }
-    </>
+    </Layout>
   )
 }
 
-export default Report
+export default Report;
