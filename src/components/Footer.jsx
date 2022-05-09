@@ -16,17 +16,14 @@ const Footer = () => {
           <ContactComponent>이용약관 개인정보처리방침</ContactComponent>
         </ContactWrapper>
         <ContactWrapper>
-          <ContactComponent>프롭스 | 상호명:민즈 | 대표자:성경민,한승민 </ContactComponent>
+          <ContactComponent>프롭스 | 상호명:민즈 | 대표:한승민 </ContactComponent>
         </ContactWrapper>
         <ContactWrapper>
           <ContactAddress>담당자 번호: 010-8216-9534 </ContactAddress>
         </ContactWrapper>
         <ContactWrapper>
-          <ContactComponent>통신판매업신고번호:2021-00000-222234</ContactComponent>
-        </ContactWrapper>
-        <ContactWrapper>
           <ContactComponent>사업자등록번호:434-18-01639 서울특별</ContactComponent>
-          <ContactAddress>시 노원구 석계로 96</ContactAddress>
+          <ContactAddress>시 가마산로 271, 1514호</ContactAddress>
         </ContactWrapper>
       </ContactWrap>
     </Wrapper>
