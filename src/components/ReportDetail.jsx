@@ -65,7 +65,7 @@ const ReportDetail = (props) => {
             <ReportAddress address={address}/>
           </div>
           <div className={styles.safeBackgroundFull}>
-            <ReportContentFree data={data} simpledata={simpledata}/>
+            <ReportContentFree data={data} simpledata={simpledata} address={address}/>
           </div>
         </>
       }

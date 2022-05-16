@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react'
+import { BrowserRouter as Link, Navigate } from 'react-router-dom'
+import Modal from 'react-modal'
 import styles from '../assets/Icon.module.scss'
 import { ReactComponent as Seesaw } from '../assets/reportSeesaw.svg'
 import { ReactComponent as Check } from '../assets/reportCheck.svg'
@@ -23,9 +25,12 @@ const ReportContent = (props) => {
     isGuaranteeInsurance: true,
     isRepaymentSubject: true
   })
+  const [ address, setAddress ] = useState();
+  const [ payModalisOpen, setPayModalisOpen ] = useState(false)
+  const overlayMargin = (window.innerHeight>812 ? ((window.innerHeight - 812) / 2) : '0px')
 
   const kakaoChannelButtonClicked = () => {
-    window.open('http://pf.kakao.com/_Bxnnxos/chat', '_blank')
+    setPayModalisOpen(true);
   }
 
   const requestButtonClicked = () => {
@@ -35,8 +40,9 @@ const ReportContent = (props) => {
   const million = 100000000
 
   useEffect(() => {
-    setSimpleData(props.simpledata)
-    setData(props.data)
+    setSimpleData(props.simpledata);
+    setData(props.data);
+    setAddress(props.address);
   }, [props])
 
   return (
@@ -136,6 +142,70 @@ const ReportContent = (props) => {
         onClick={() => kakaoChannelButtonClicked()}
         >결제하기</button>
       </div>
+      <Modal isOpen={payModalisOpen}
+        style={{
+          overlay: {
+            position: 'fixed',
+            width: '375px',
+            height: '812px',
+            margin: '0 auto',
+            marginTop: overlayMargin,
+            backgroundColor: 'rgba(0, 0, 0, 0.85)'
+          },
+          content: {
+            position: 'absolute',
+            width: '293px',
+            height: '309px',
+            left: '41px', // (overlay width - content width) / 2
+            top: '251.5px', // (overlay height - content height) / 2
+            borderRadius: '20px',
+            paddingLeft: '32px',
+            paddingRight: '32px',
+            paddingTop: '30px',
+            paddingBottom: '30px'
+          }
+        }}>
+        <div style={{fontSize: '1.1em', fontWeight: '700', textAlign: 'center'}}>4,900원 결제하기</div>
+        <div style={{display: 'flex', marginTop: '15px'}}>
+          <a href='#!' style={{textDecoration:'none', flex: '1'}}>
+          <button type='button' className='btn btn-outline-primary'
+            style={{
+              height: '30px',
+              fontWeight: '500',
+              borderRadius: '20px',
+              width: '100%',
+              fontSize: '12px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}
+            onClick={() => setPayModalisOpen(false)}
+          >취소</button>
+          </a>
+          <div style={{flex: '0.2'}}></div>
+          <Navigate to={"/report"} state={{address}} 
+            style={{ textDecoration:'none', flex: '1' }}>
+            <button type='button' className='btn btn-primary'
+              style={{
+                height: '30px',
+                fontWeight: '500',
+                borderRadius: '20px',
+                fontSize: '12px',
+                width: '100%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}
+            >동의 및 결제</button>
+          </Navigate>
+        </div>
+        <div className={styles.tips} style={{marginTop: '25px'}}>
+          결제 금액은 등기부 등본, 건축물 대장
+        </div>
+        <div className={styles.tips}>
+          서류 발급 대행비이며 안전도 해석 서비스는 무료입니다.
+        </div>
+      </Modal>
       <div className={styles.summaryMents}>저희 서비스는 법률 자문을 포함하지 않습니다.<br/><br/>
         권리의 득실·변경이나 충돌 여부, 우열관계 등의 분석을 제공하고 있지 않기 때문에 복잡한 권리 관계가 얽힌 경우 ‘일반 법률사무’를 제공하는 전문가(변호사)에게 조언을 구해야 합니다.<br/><br/>
         계약 선택에 대한 책임은 계약자 본인에게 있습니다.
