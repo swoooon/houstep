@@ -20,7 +20,7 @@ const Footer = () => {
         </ContactWrapper>
         <ContactWrapper>
           <ContactAddress>담당자 번호: 010-8216-9534 </ContactAddress>
-        </ContactWrapper>
+        </ContactWrapper> 
         <ContactWrapper>
           <ContactComponent>사업자등록번호:434-18-01639 서울특별</ContactComponent>
           <ContactAddress>시 가마산로 271, 1514호</ContactAddress>
